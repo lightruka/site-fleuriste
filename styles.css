@@ -385,13 +385,6 @@ textarea {
   text-align: center;
 }
 
-.mobile-tap-hint {
-  display: none;
-  margin: -8px 0 16px;
-  color: var(--green-dark);
-  font-weight: 600;
-  font-size: 0.92rem;
-}
 
 .site-links-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -654,10 +647,6 @@ textarea {
 
   .site-links-grid {
     grid-template-columns: 1fr;
-  }
-
-  .mobile-tap-hint {
-    display: block;
   }
 
   .hero-content h1 {
