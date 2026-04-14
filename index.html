@@ -1,87 +1,80 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Accès rapide | Maison Florale</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="container nav-wrap">
-        <a class="logo site-logo-link" href="index.html"
-          ><img class="logo-icon" src="logo-floral.svg" alt="" /><span
-            >Maison Florale</span
-          ></a
-        >
-        <a class="top-contact-link" href="contact.html">Contact</a>
-      </div>
-    </header>
 
-    <main class="container section">
-      <section class="site-title-banner">
-        <h1 class="site-title-large">Maison Florale</h1>
-        <p class="site-slogan">Des fleurs qui racontent vos émotions</p>
-      </section>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accès rapide | Maison Florale</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
 
-      <h2>Entrée du site vitrine</h2>
-      <p class="section-intro">
-        Cette page regroupe les 4 pages principales. Cliquez sur une section
-        pour y accéder.
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="logo site-logo-link" href="index.html"><img class="logo-icon" src="logo-floral.svg"
+          alt="" /><span>Maison Florale</span></a>
+      <a class="top-contact-link" href="contact.html">Contact</a>
+    </div>
+  </header>
+
+  <main class="container section">
+    <section class="site-title-banner">
+      <h1 class="site-title-large">Maison Florale</h1>
+      <p class="site-slogan">Des fleurs qui racontent vos émotions</p>
+    </section>
+
+    <h2>Entrée du site vitrine</h2>
+    <p class="section-intro">
+      Cette page regroupe les 3 pages principales. Cliquez sur une section
+      pour y accéder.
+    </p>
+    <p class="mobile-tap-hint">Ouvrir</p>
+
+    <section class="cards site-links-grid">
+      <a class="site-card-link" href="accueil.html">
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?auto=format&fit=crop&w=900&q=80"
+            alt="Bouquet pour l'accueil" />
+          <div class="card-body">
+            <h3>Accueil</h3>
+            <p>Présentation de la boutique, slogan et univers floral.</p>
+          </div>
+        </article>
+      </a>
+      <a class="site-card-link" href="produits.html">
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?auto=format&fit=crop&w=900&q=80"
+            alt="Bouquets de la catégorie produits" />
+          <div class="card-body">
+            <h3>Produits</h3>
+            <p>Catégories, exemples de bouquets et fiches détaillées.</p>
+          </div>
+        </article>
+      </a>
+      <a class="site-card-link" href="apropos.html">
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1463320898484-cdee8141c787?auto=format&fit=crop&w=900&q=80"
+            alt="Atelier floral pour la section à propos" />
+          <div class="card-body">
+            <h3>À propos</h3>
+            <p>Histoire du fleuriste et savoir-faire artisanal.</p>
+          </div>
+        </article>
+      </a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>
+        © <span id="year"></span> Maison Florale - Fleuriste passionné |
+        <a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram</a>
+        |
+        <a href="contact.html">Mentions légales</a>
       </p>
-      <p class="mobile-tap-hint">Ouvrir</p>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
 
-      <section class="cards site-links-grid">
-        <a class="site-card-link" href="accueil.html">
-          <article class="card">
-            <img
-              src="https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?auto=format&fit=crop&w=900&q=80"
-              alt="Bouquet pour l'accueil"
-            />
-            <div class="card-body">
-              <h3>Accueil</h3>
-              <p>Présentation de la boutique, slogan et univers floral.</p>
-            </div>
-          </article>
-        </a>
-        <a class="site-card-link" href="produits.html">
-          <article class="card">
-            <img
-              src="https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?auto=format&fit=crop&w=900&q=80"
-              alt="Bouquets de la catégorie produits"
-            />
-            <div class="card-body">
-              <h3>Produits</h3>
-              <p>Catégories, exemples de bouquets et fiches détaillées.</p>
-            </div>
-          </article>
-        </a>
-        <a class="site-card-link" href="apropos.html">
-          <article class="card">
-            <img
-              src="https://images.unsplash.com/photo-1463320898484-cdee8141c787?auto=format&fit=crop&w=900&q=80"
-              alt="Atelier floral pour la section à propos"
-            />
-            <div class="card-body">
-              <h3>À propos</h3>
-              <p>Histoire du fleuriste et savoir-faire artisanal.</p>
-            </div>
-          </article>
-        </a>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container">
-        <p>
-          © <span id="year"></span> Maison Florale - Fleuriste passionné |
-          <a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram</a>
-          |
-          <a href="contact.html">Mentions légales</a>
-        </p>
-      </div>
-    </footer>
-    <script src="script.js"></script>
-  </body>
 </html>
-
