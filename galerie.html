@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galerie | Maison Florale</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="logo-floral.svg" type="image/svg+xml" />
+    <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;else if(matchMedia('(prefers-color-scheme:dark)').matches)document.documentElement.dataset.theme='dark'})()</script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="logo" href="index.html"
+          ><img class="logo-icon" src="logo-floral.svg" alt="" /><span
+            >Maison Florale</span
+          ></a
+        >
+        <button class="theme-toggle" aria-label="Mode sombre">🌙</button>
+        <button class="menu-btn" aria-label="Ouvrir le menu">☰</button>
+        <nav class="nav-links">
+          <a href="accueil.html">Accueil</a>
+          <a href="produits.html">Produits</a>
+          <a class="active" href="galerie.html">Galerie</a>
+          <a href="mariages.html">Mariages</a>
+          <a href="apropos.html">À propos</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container section">
+      <h1>Notre galerie</h1>
+      <p class="section-intro">
+        Retrouvez un aperçu de nos réalisations florales pour chaque occasion.
+      </p>
+
+      <div class="gallery-filters">
+        <button class="filter-btn active" data-filter="all">Tout</button>
+        <button class="filter-btn" data-filter="mariage">Mariages</button>
+        <button class="filter-btn" data-filter="anniversaire">Anniversaires</button>
+        <button class="filter-btn" data-filter="decoration">Décoration</button>
+        <button class="filter-btn" data-filter="deuil">Deuil</button>
+      </div>
+
+      <div class="gallery-grid">
+        <figure class="gallery-item" data-category="mariage">
+          <img src="https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=800&q=80" alt="Bouquet de mariée pastel" />
+          <figcaption>Bouquet de mariée pastel</figcaption>
+        </figure>
+        <figure class="gallery-item" data-category="mariage">
+          <img src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?auto=format&fit=crop&w=800&q=80" alt="Composition table mariage" />
+          <figcaption>Centre de table mariage</figcaption>
+        </figure>
+        <figure class="gallery-item" data-category="anniversaire">
+          <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=800&q=80" alt="Bouquet anniversaire coloré" />
+          <figcaption>Bouquet anniversaire</figcaption>
+        </figure>
+        <figure class="gallery-item" data-category="decoration">
+          <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=800&q=80" alt="Décoration florale boutique" />
+          <figcaption>Décoration boutique</figcaption>
+        </figure>
+        <figure class="gallery-item" data-category="mariage">
+          <img src="https://images.unsplash.com/photo-1455659817273-f96807779a8a?auto=format&fit=crop&w=800&q=80" alt="Arche florale cérémonie" />
+          <figcaption>Arche de cérémonie</figcaption>
+        </figure>
+        <figure class="gallery-item" data-category="deuil">
+          <img src="https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?auto=format&fit=crop&w=800&q=80" alt="Hommage floral blanc" />
+          <figcaption>Hommage floral blanc</figcaption>
+        </figure>
+        <figure class="gallery-item" data-category="anniversaire">
+          <img src="https://images.unsplash.com/photo-1487070183336-b863922373d4?auto=format&fit=crop&w=800&q=80" alt="Composition rose et dorée" />
+          <figcaption>Composition rose chic</figcaption>
+        </figure>
+        <figure class="gallery-item" data-category="decoration">
+          <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=80" alt="Arrangement floral vitrine" />
+          <figcaption>Vitrine saisonnière</figcaption>
+        </figure>
+        <figure class="gallery-item" data-category="deuil">
+          <img src="https://images.unsplash.com/photo-1470509037663-253afd7f0f51?auto=format&fit=crop&w=800&q=80" alt="Gerbe naturelle tons crème" />
+          <figcaption>Gerbe naturelle</figcaption>
+        </figure>
+        <figure class="gallery-item" data-category="decoration">
+          <img src="https://images.unsplash.com/photo-1526045478516-99145907023c?auto=format&fit=crop&w=800&q=80" alt="Bouquet événementiel" />
+          <figcaption>Événement professionnel</figcaption>
+        </figure>
+        <figure class="gallery-item" data-category="anniversaire">
+          <img src="https://images.unsplash.com/photo-1463320898484-cdee8141c787?auto=format&fit=crop&w=800&q=80" alt="Bouquet surprise livraison" />
+          <figcaption>Bouquet surprise</figcaption>
+        </figure>
+        <figure class="gallery-item" data-category="mariage">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" alt="Boutonnière marié" />
+          <figcaption>Boutonnière élégante</figcaption>
+        </figure>
+      </div>
+    </main>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+      <button class="lightbox-close" aria-label="Fermer">&times;</button>
+      <img id="lightbox-img" src="" alt="" />
+    </div>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>
+          © <span id="year"></span> Maison Florale - Fleuriste passionné |
+          <a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram</a>
+          |
+          <a href="contact.html">Mentions légales</a>
+        </p>
+      </div>
+    </footer>
+    <a class="whatsapp-float" href="https://wa.me/33123456789" target="_blank" rel="noreferrer" aria-label="Contacter sur WhatsApp">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.649-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.397z"/></svg>
+    </a>
+    <button class="back-to-top" aria-label="Retour en haut">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+    <script src="script.js"></script>
+  </body>
+</html>

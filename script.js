@@ -234,3 +234,174 @@ if (
       selected.category.charAt(0).toUpperCase() + selected.category.slice(1);
   }
 }
+
+// ── Scroll Reveal ──
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.12 }
+);
+
+document.querySelectorAll("main .section, main .about-grid, main .cards").forEach((el) => {
+  const rect = el.getBoundingClientRect();
+  if (rect.top > window.innerHeight * 0.85) {
+    el.classList.add("reveal");
+    revealObserver.observe(el);
+  }
+});
+
+// ── Back to Top ──
+const backToTop = document.querySelector(".back-to-top");
+if (backToTop) {
+  window.addEventListener("scroll", () => {
+    backToTop.classList.toggle("visible", window.scrollY > 400);
+  });
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+// ── Hero Carousel ──
+const carousel = document.querySelector(".hero-carousel");
+if (carousel) {
+  const slides = carousel.querySelectorAll("img");
+  const prevBtn = carousel.querySelector(".prev");
+  const nextBtn = carousel.querySelector(".next");
+  let currentSlide = 0;
+  let autoPlay;
+
+  const showSlide = (i) => {
+    slides.forEach((s) => s.classList.remove("active"));
+    slides[i].classList.add("active");
+    currentSlide = i;
+  };
+
+  const next = () => showSlide((currentSlide + 1) % slides.length);
+  const prev = () => showSlide((currentSlide - 1 + slides.length) % slides.length);
+  const startAuto = () => { autoPlay = setInterval(next, 5000); };
+
+  if (nextBtn && prevBtn) {
+    nextBtn.addEventListener("click", () => {
+      clearInterval(autoPlay);
+      next();
+      startAuto();
+    });
+    prevBtn.addEventListener("click", () => {
+      clearInterval(autoPlay);
+      prev();
+      startAuto();
+    });
+  }
+
+  showSlide(0);
+  startAuto();
+}
+
+// ── Animated Counters ──
+const counterEls = document.querySelectorAll(".counter-value");
+if (counterEls.length) {
+  const counterObs = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseFloat(el.dataset.target);
+          const suffix = el.dataset.suffix || "";
+          const prefix = el.dataset.prefix || "";
+          const dec = el.dataset.decimal === "true";
+          const dur = 2000;
+          const t0 = performance.now();
+
+          const tick = (now) => {
+            const p = Math.min((now - t0) / dur, 1);
+            const ease = 1 - Math.pow(1 - p, 3);
+            const v = target * ease;
+            el.textContent = prefix + (dec ? v.toFixed(1) : Math.floor(v)) + suffix;
+            if (p < 1) requestAnimationFrame(tick);
+          };
+
+          requestAnimationFrame(tick);
+          counterObs.unobserve(el);
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  counterEls.forEach((el) => counterObs.observe(el));
+}
+
+// ── Seasonal Banner ──
+const seasonBanner = document.getElementById("season-banner");
+if (seasonBanner) {
+  const m = new Date().getMonth();
+  const data = [
+    ["❄️", "Hiver", "Amaryllis, hellébores, anémones"],
+    ["❄️", "Hiver", "Amaryllis, hellébores, anémones"],
+    ["🌷", "Printemps", "Pivoines, renoncules, lilas, tulipes"],
+    ["🌷", "Printemps", "Pivoines, renoncules, lilas, tulipes"],
+    ["🌷", "Printemps", "Pivoines, renoncules, lilas, tulipes"],
+    ["🌻", "Été", "Tournesols, lavande, dahlias, delphiniums"],
+    ["🌻", "Été", "Tournesols, lavande, dahlias, delphiniums"],
+    ["🌻", "Été", "Tournesols, lavande, dahlias, delphiniums"],
+    ["🍂", "Automne", "Chrysanthèmes, dahlias, roses d'automne"],
+    ["🍂", "Automne", "Chrysanthèmes, dahlias, roses d'automne"],
+    ["🍂", "Automne", "Chrysanthèmes, dahlias, roses d'automne"],
+    ["❄️", "Hiver", "Amaryllis, hellébores, anémones"],
+  ];
+  const [icon, name, flowers] = data[m];
+  seasonBanner.innerHTML = `${icon} <strong>${name}</strong> — Fleurs de saison : ${flowers}`;
+}
+
+// ── Gallery Filters ──
+const filterBtns = document.querySelectorAll(".filter-btn");
+const galleryItems = document.querySelectorAll(".gallery-item");
+
+if (filterBtns.length && galleryItems.length) {
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const f = btn.dataset.filter;
+      filterBtns.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      galleryItems.forEach((item) => {
+        item.classList.toggle("hidden", f !== "all" && item.dataset.category !== f);
+      });
+    });
+  });
+}
+
+// ── Lightbox ──
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const lightboxClose = document.querySelector(".lightbox-close");
+
+if (lightbox && lightboxImg) {
+  const closeLB = () => {
+    lightbox.classList.remove("open");
+    document.body.style.overflow = "";
+  };
+
+  document.querySelectorAll(".gallery-item").forEach((item) => {
+    item.addEventListener("click", () => {
+      const img = item.querySelector("img");
+      if (img) {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+    });
+  });
+
+  if (lightboxClose) lightboxClose.addEventListener("click", closeLB);
+  lightbox.addEventListener("click", (e) => { if (e.target === lightbox) closeLB(); });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && lightbox.classList.contains("open")) closeLB();
+  });
+}
