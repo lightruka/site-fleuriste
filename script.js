@@ -1,31 +1,3 @@
-<<<<<<< HEAD
-const menuBtn = document.querySelector(".menu-btn");
-const navLinks = document.querySelector(".nav-links");
-
-if (menuBtn && navLinks) {
-  menuBtn.addEventListener("click", () => {
-    navLinks.classList.toggle("open");
-  });
-
-  navLinks.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => navLinks.classList.remove("open"));
-  });
-}
-
-const yearNode = document.getElementById("year");
-if (yearNode) {
-  yearNode.textContent = new Date().getFullYear();
-}
-
-const form = document.getElementById("contact-form");
-if (form) {
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    alert("Merci pour votre message. Nous vous répondrons rapidement.");
-    form.reset();
-  });
-}
-=======
 const menuBtn = document.querySelector(".menu-btn");
 const navLinks = document.querySelector(".nav-links");
 
@@ -228,4 +200,3 @@ if (
       selected.category.charAt(0).toUpperCase() + selected.category.slice(1);
   }
 }
->>>>>>> 6f851b896aec6d916f2b29090cd61e0b0ad884a8
