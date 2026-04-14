@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Accès rapide | Maison Florale</title>
   <link rel="stylesheet" href="styles.css" />
+  <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;else if(matchMedia('(prefers-color-scheme:dark)').matches)document.documentElement.dataset.theme='dark'})()</script>
 </head>
 
 <body>
@@ -13,6 +14,7 @@
     <div class="container nav-wrap">
       <a class="logo site-logo-link" href="index.html"><img class="logo-icon" src="logo-floral.svg"
           alt="" /><span>Maison Florale</span></a>
+      <button class="theme-toggle" aria-label="Mode sombre">🌙</button>
       <a class="top-contact-link" href="contact.html">Contact</a>
     </div>
   </header>
@@ -28,7 +30,6 @@
       Cette page regroupe les 3 pages principales. Cliquez sur une section
       pour y accéder.
     </p>
-    <p class="mobile-tap-hint">Ouvrir</p>
 
     <section class="cards site-links-grid">
       <a class="site-card-link" href="accueil.html">

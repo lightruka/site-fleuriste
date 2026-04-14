@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap");
 
 :root {
+  /* Colors */
   --green: #7aa37a;
   --green-dark: #4f7450;
   --pink: #f6d7df;
@@ -8,8 +9,47 @@
   --white: #ffffff;
   --text: #2f3a2f;
   --muted: #6f7b6f;
+
+  /* Surfaces */
+  --surface: #ffffff;
+  --bg-start: #ffffff;
+  --bg-end: #fdf8fa;
+  --bg-header: rgba(255, 255, 255, 0.92);
+  --input-bg: #ffffff;
+
+  /* Borders */
+  --border: #f0e6ea;
+  --input-border: #e1d8dc;
+  --footer-border: #ece2e7;
+  --banner-border: #ebdce2;
+  --nav-mobile-border: #eadfe3;
+
+  /* Accents */
+  --btn-secondary-text: #5c3f48;
+  --slogan-color: #5f6e5f;
+  --review-accent: #d8ebd9;
+  --tag-bg: #f9edf1;
+  --tag-color: #875a67;
+  --active-ring: #b9d3ba;
+
+  /* CTA */
+  --cta-bg: #f8fcf8;
+  --cta-border: #e2efe2;
+
+  /* Banner */
+  --banner-start: #f4fff4;
+  --banner-end: #fdeff4;
+
+  /* Shadows */
   --shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+  --hover-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
+  --btn-hover-shadow: 0 10px 18px rgba(79, 116, 80, 0.18);
+
+  /* Layout */
   --radius: 16px;
+
+  /* Easing */
+  --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
@@ -22,7 +62,7 @@ body {
   padding: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: var(--text);
-  background: linear-gradient(180deg, #fff 0%, #fdf8fa 100%);
+  background: linear-gradient(180deg, var(--bg-start) 0%, var(--bg-end) 100%);
 }
 
 html {
@@ -48,15 +88,16 @@ a {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(255, 255, 255, 0.92);
+  background: var(--bg-header);
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid #f0e6ea;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.4s ease, border-color 0.4s ease;
 }
 
 .nav-wrap {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 14px;
   min-height: 74px;
 }
 
@@ -69,12 +110,14 @@ a {
   color: var(--green-dark);
   position: relative;
   padding-bottom: 2px;
+  margin-right: auto;
 }
 
 .logo-icon {
   width: 28px;
   height: 28px;
   flex-shrink: 0;
+  transition: filter 0.4s ease;
 }
 
 .top-contact-link {
@@ -83,7 +126,7 @@ a {
   color: var(--text);
   padding: 6px 2px;
   position: relative;
-  transition: color 0.25s ease;
+  transition: color 0.3s var(--ease-out);
   padding-bottom: 2px;
 }
 
@@ -103,7 +146,7 @@ a {
   color: var(--text);
   padding: 6px 2px;
   position: relative;
-  transition: color 0.25s ease;
+  transition: color 0.3s var(--ease-out);
 }
 
 .nav-links a:hover,
@@ -120,6 +163,29 @@ a {
   border-radius: 10px;
   padding: 8px 10px;
   cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+/* ── Theme toggle ── */
+.theme-toggle {
+  border: none;
+  background: none;
+  font-size: 1.15rem;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.35s var(--ease-out), background 0.3s ease;
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.15) rotate(20deg);
+  background: var(--pink);
 }
 
 .hero {
@@ -160,13 +226,21 @@ a {
   padding: 11px 20px;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.25s ease, opacity 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.3s var(--ease-out),
+    opacity 0.3s ease,
+    box-shadow 0.3s var(--ease-out),
+    background 0.3s ease,
+    color 0.3s ease;
 }
 
 .btn:hover {
-  transform: translateY(-2px) scale(1.01);
+  transform: translateY(-2px) scale(1.02);
   opacity: 0.96;
-  box-shadow: 0 10px 18px rgba(79, 116, 80, 0.18);
+  box-shadow: var(--btn-hover-shadow);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.97);
 }
 
 .btn-primary {
@@ -176,7 +250,7 @@ a {
 
 .btn-secondary {
   background: var(--pink);
-  color: #5c3f48;
+  color: var(--btn-secondary-text);
 }
 
 .hero img {
@@ -208,18 +282,20 @@ a {
 }
 
 .card {
-  background: var(--white);
+  background: var(--surface);
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.35s var(--ease-out),
+    box-shadow 0.35s var(--ease-out),
+    background 0.4s ease;
 }
 
 .card img {
   height: 220px;
   width: 100%;
   object-fit: cover;
-  transition: transform 0.45s ease;
+  transition: transform 0.5s var(--ease-out);
 }
 
 .card-body {
@@ -260,7 +336,7 @@ a {
 }
 
 .reviews-grid .card {
-  border-top: 4px solid #d8ebd9;
+  border-top: 4px solid var(--review-accent);
 }
 
 .faq-list {
@@ -270,10 +346,11 @@ a {
 
 .final-cta {
   text-align: center;
-  background: #f8fcf8;
-  border: 1px solid #e2efe2;
+  background: var(--cta-bg);
+  border: 1px solid var(--cta-border);
   border-radius: var(--radius);
   padding: 36px 20px;
+  transition: background 0.4s ease, border-color 0.4s ease;
 }
 
 .final-cta .hero-cta-group {
@@ -288,10 +365,11 @@ a {
 }
 
 .panel {
-  background: #fff;
+  background: var(--surface);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   padding: 20px;
+  transition: background 0.4s ease, box-shadow 0.3s ease;
 }
 
 .contact-list {
@@ -318,11 +396,21 @@ label {
 input,
 textarea {
   width: 100%;
-  border: 1px solid #e1d8dc;
+  border: 1px solid var(--input-border);
   border-radius: 10px;
   padding: 10px 12px;
   font: inherit;
   font-size: 16px;
+  background: var(--input-bg);
+  color: var(--text);
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(122, 163, 122, 0.2);
 }
 
 textarea {
@@ -335,14 +423,16 @@ textarea {
   min-height: 260px;
   border: 0;
   border-radius: 12px;
+  transition: filter 0.4s ease;
 }
 
 .site-footer {
   margin-top: 40px;
-  border-top: 1px solid #ece2e7;
+  border-top: 1px solid var(--footer-border);
   padding: 20px 0;
   color: var(--muted);
   text-align: center;
+  transition: border-color 0.4s ease;
 }
 
 .site-footer a {
@@ -356,8 +446,8 @@ textarea {
 
 .site-title-banner {
   margin-bottom: 24px;
-  background: linear-gradient(135deg, #f4fff4 0%, #fdeff4 100%);
-  border: 1px solid #ebdce2;
+  background: linear-gradient(135deg, var(--banner-start) 0%, var(--banner-end) 100%);
+  border: 1px solid var(--banner-border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   min-height: 220px;
@@ -366,6 +456,7 @@ textarea {
   gap: 10px;
   align-items: center;
   justify-content: center;
+  transition: background 0.4s ease, border-color 0.4s ease;
 }
 
 .site-title-large {
@@ -379,18 +470,10 @@ textarea {
 
 .site-slogan {
   margin: 0;
-  color: #5f6e5f;
+  color: var(--slogan-color);
   font-size: clamp(1rem, 2.2vw, 1.25rem);
   font-style: italic;
   text-align: center;
-}
-
-.mobile-tap-hint {
-  display: none;
-  margin: -8px 0 16px;
-  color: var(--green-dark);
-  font-weight: 600;
-  font-size: 0.92rem;
 }
 
 .site-links-grid {
@@ -405,12 +488,12 @@ textarea {
 
 .site-card-link .card {
   height: 100%;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
 }
 
 .site-card-link:hover .card {
   transform: translateY(-5px);
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--hover-shadow);
 }
 
 .site-card-link .card h3 {
@@ -431,7 +514,7 @@ textarea {
   background: currentColor;
   transform: scaleX(0);
   transform-origin: center;
-  transition: transform 0.3s ease;
+  transition: transform 0.35s var(--ease-out);
 }
 
 .logo:hover::after,
@@ -444,11 +527,15 @@ textarea {
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--hover-shadow);
 }
 
 .card:hover img {
-  transform: scale(1.03);
+  transform: scale(1.04);
+}
+
+.card:active {
+  transform: translateY(-1px) scale(0.98);
 }
 
 .click-tip {
@@ -458,7 +545,7 @@ textarea {
 
 .product-category-card {
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
 }
 
 .product-category-card:hover {
@@ -466,7 +553,7 @@ textarea {
 }
 
 .product-category-card.active {
-  box-shadow: 0 0 0 2px #b9d3ba, var(--shadow);
+  box-shadow: 0 0 0 2px var(--active-ring), var(--shadow);
 }
 
 .product-description-panel {
@@ -479,7 +566,7 @@ textarea {
 
 .bouquet-example-card {
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
 }
 
 .bouquet-example-card:hover {
@@ -491,10 +578,11 @@ textarea {
   margin-bottom: 8px;
   padding: 4px 10px;
   border-radius: 999px;
-  background: #f9edf1;
-  color: #875a67;
+  background: var(--tag-bg);
+  color: var(--tag-color);
   font-size: 0.8rem;
   font-weight: 700;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .detail-layout {
@@ -559,7 +647,8 @@ textarea {
   .btn,
   .card,
   .card img,
-  .site-card-link .card {
+  .site-card-link .card,
+  .theme-toggle {
     transition: none;
   }
 }
@@ -630,8 +719,8 @@ textarea {
     position: absolute;
     right: 4%;
     top: 64px;
-    background: #fff;
-    border: 1px solid #eadfe3;
+    background: var(--surface);
+    border: 1px solid var(--nav-mobile-border);
     border-radius: 12px;
     box-shadow: var(--shadow);
     width: min(92vw, 260px);
@@ -656,8 +745,8 @@ textarea {
     grid-template-columns: 1fr;
   }
 
-  .mobile-tap-hint {
-    display: block;
+  .hero-cta-group .btn:not(.btn-call) {
+    display: none;
   }
 
   .hero-content h1 {
@@ -719,4 +808,53 @@ textarea {
   .card img {
     height: 165px;
   }
+}
+
+/* ======================== Dark Mode ======================== */
+[data-theme="dark"] {
+  --green: #8cc88c;
+  --green-dark: #a0dba3;
+  --pink: #3a2530;
+  --pink-dark: #5a3848;
+  --white: #1a1a2c;
+  --text: #e0e4e8;
+  --muted: #9a9faa;
+
+  --surface: #222236;
+  --bg-start: #151525;
+  --bg-end: #12121e;
+  --bg-header: rgba(21, 21, 37, 0.94);
+  --input-bg: #1c1c30;
+
+  --border: #2c2c42;
+  --input-border: #3a3548;
+  --footer-border: #2a2535;
+  --banner-border: #3a2e35;
+  --nav-mobile-border: #3a3548;
+
+  --btn-secondary-text: #d4a8b8;
+  --slogan-color: #8a9a8a;
+  --review-accent: #3a5a3c;
+  --tag-bg: #3a2830;
+  --tag-color: #d4a0b0;
+  --active-ring: #5a8a5c;
+
+  --cta-bg: #1a2a1e;
+  --cta-border: #2a3e2e;
+
+  --banner-start: #1a2a1e;
+  --banner-end: #2a1a24;
+
+  --shadow: 0 8px 22px rgba(0, 0, 0, 0.45);
+  --hover-shadow: 0 14px 28px rgba(0, 0, 0, 0.35);
+  --btn-hover-shadow: 0 10px 18px rgba(100, 180, 100, 0.15);
+}
+
+[data-theme="dark"] .map-frame {
+  filter: invert(0.92) hue-rotate(180deg);
+  border-radius: 12px;
+}
+
+[data-theme="dark"] .logo-icon {
+  filter: brightness(1.6) saturate(0.8);
 }

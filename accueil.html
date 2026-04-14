@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Maison Florale | Fleuriste</title>
     <link rel="stylesheet" href="styles.css" />
+    <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;else if(matchMedia('(prefers-color-scheme:dark)').matches)document.documentElement.dataset.theme='dark'})()</script>
   </head>
   <body>
     <header class="site-header">
@@ -14,6 +15,7 @@
             >Maison Florale</span
           ></a
         >
+        <button class="theme-toggle" aria-label="Mode sombre">🌙</button>
         <button class="menu-btn" aria-label="Ouvrir le menu">☰</button>
         <nav class="nav-links">
           <a class="active" href="accueil.html">Accueil</a>
@@ -36,7 +38,7 @@
           </p>
           <div class="hero-cta-group">
             <a class="btn btn-primary" href="contact.html">Demander un devis</a>
-            <a class="btn btn-secondary" href="tel:+33123456789">Nous appeler</a>
+            <a class="btn btn-secondary btn-call" href="tel:+33123456789">Nous appeler</a>
             <a class="btn btn-secondary" href="produits.html">Voir nos bouquets</a>
           </div>
         </div>
@@ -313,7 +315,7 @@
         </p>
         <div class="hero-cta-group">
           <a class="btn btn-primary" href="contact.html">Demander un devis</a>
-          <a class="btn btn-secondary" href="tel:+33123456789">Appeler la boutique</a>
+          <a class="btn btn-secondary btn-call" href="tel:+33123456789">Appeler la boutique</a>
         </div>
       </section>
     </main>

@@ -25,6 +25,32 @@ if (form) {
   });
 }
 
+// Dark mode toggle
+const themeToggle = document.querySelector(".theme-toggle");
+const htmlRoot = document.documentElement;
+
+function updateToggleIcon() {
+  if (!themeToggle) return;
+  themeToggle.textContent = htmlRoot.dataset.theme === "dark" ? "☀️" : "🌙";
+  themeToggle.setAttribute(
+    "aria-label",
+    htmlRoot.dataset.theme === "dark"
+      ? "Activer le mode clair"
+      : "Activer le mode sombre"
+  );
+}
+
+updateToggleIcon();
+
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    const next = htmlRoot.dataset.theme === "dark" ? "light" : "dark";
+    htmlRoot.dataset.theme = next;
+    localStorage.setItem("theme", next);
+    updateToggleIcon();
+  });
+}
+
 const bouquetData = {
   mariage: [
     {
