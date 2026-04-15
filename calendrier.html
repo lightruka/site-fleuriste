@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendrier floral | Maison Florale</title>
+    <meta name="description" content="Découvrez les fleurs de saison mois par mois. Maison Florale vous guide pour choisir les variétés idéales tout au long de l'année." />
+    <meta property="og:title" content="Calendrier floral | Maison Florale" />
+    <meta property="og:description" content="Quelles fleurs choisir chaque mois ? Notre calendrier floral vous aide à composer des bouquets de saison." />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="logo-floral.svg" type="image/svg+xml" />
+    <script>(function(){if(localStorage.getItem('theme')==='dark')document.documentElement.dataset.theme='dark'})()</script>
+  </head>
+  <body>
+    <div class="scroll-progress"></div>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="logo" href="accueil.html"
+          ><img loading="lazy" class="logo-icon" src="logo-floral.svg" alt="" /><span
+            >Maison Florale</span
+          ></a
+        >
+        <button class="theme-toggle" aria-label="Mode sombre">🌙</button>
+        <button class="menu-btn" aria-label="Ouvrir le menu">☰</button>
+        <nav class="nav-links">
+          <a href="accueil.html">Accueil</a>
+          <a href="produits.html">Produits</a>
+          <a href="galerie.html">Galerie</a>
+          <a href="mariages.html">Mariages</a>
+          <a class="active" href="calendrier.html">Calendrier</a>
+          <a href="apropos.html">À propos</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero" style="min-height:auto; padding: 40px 0 20px;">
+        <div class="hero-content" style="max-width:100%;">
+          <h1>Calendrier floral</h1>
+          <p class="tagline">Les plus belles fleurs, mois après mois.</p>
+          <p>
+            Chaque saison offre ses trésors floraux. Explorez notre calendrier
+            pour découvrir les variétés disponibles et nos conseils pour des
+            compositions toujours fraîches et de saison.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Fleurs de saison par mois</h2>
+        <p class="section-intro">Cliquez sur un mois pour découvrir les variétés disponibles et nos conseils de composition.</p>
+        <div class="calendar-grid">
+          <div class="calendar-month" data-month="janvier"><span class="month-emoji">❄️</span><span class="month-name">Janvier</span></div>
+          <div class="calendar-month" data-month="fevrier"><span class="month-emoji">💐</span><span class="month-name">Février</span></div>
+          <div class="calendar-month" data-month="mars"><span class="month-emoji">🌷</span><span class="month-name">Mars</span></div>
+          <div class="calendar-month" data-month="avril"><span class="month-emoji">🌸</span><span class="month-name">Avril</span></div>
+          <div class="calendar-month" data-month="mai"><span class="month-emoji">🌺</span><span class="month-name">Mai</span></div>
+          <div class="calendar-month" data-month="juin"><span class="month-emoji">🌹</span><span class="month-name">Juin</span></div>
+          <div class="calendar-month" data-month="juillet"><span class="month-emoji">🌻</span><span class="month-name">Juillet</span></div>
+          <div class="calendar-month" data-month="aout"><span class="month-emoji">☀️</span><span class="month-name">Août</span></div>
+          <div class="calendar-month" data-month="septembre"><span class="month-emoji">🍂</span><span class="month-name">Septembre</span></div>
+          <div class="calendar-month" data-month="octobre"><span class="month-emoji">🎃</span><span class="month-name">Octobre</span></div>
+          <div class="calendar-month" data-month="novembre"><span class="month-emoji">🍁</span><span class="month-name">Novembre</span></div>
+          <div class="calendar-month" data-month="decembre"><span class="month-emoji">🎄</span><span class="month-name">Décembre</span></div>
+        </div>
+        <div id="calendar-detail" class="calendar-detail" style="display:none;"></div>
+      </section>
+
+      <!-- Seasonal tips -->
+      <section class="section">
+        <h2>Astuces saisonnières</h2>
+        <div class="cards">
+          <article class="card tips-card">
+            <div class="card-body">
+              <h3>🌷 Printemps</h3>
+              <p>Pivoines, tulipes, renoncules et lilas : le printemps est la saison la plus riche en variétés. Idéal pour les mariages et les compositions romantiques.</p>
+            </div>
+          </article>
+          <article class="card tips-card">
+            <div class="card-body">
+              <h3>🌻 Été</h3>
+              <p>Tournesols, dahlias et lavande apportent couleurs solaires et parfums envoûtants. Parfait pour les bouquets généreux et les fêtes en extérieur.</p>
+            </div>
+          </article>
+          <article class="card tips-card">
+            <div class="card-body">
+              <h3>🍂 Automne</h3>
+              <p>Chrysanthèmes, asters et dahlias tardifs dans des tons cuivrés et orangés. Ajoutez des baies et branches pour un effet texturé chaleureux.</p>
+            </div>
+          </article>
+          <article class="card tips-card">
+            <div class="card-body">
+              <h3>❄️ Hiver</h3>
+              <p>Amaryllis, hellébores (roses de Noël) et anémones subliment l'hiver. Préférez les tons bordeaux, blancs et dorés pour une ambiance festive.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section final-cta">
+        <h2>Envie d'un bouquet de saison ?</h2>
+        <p class="section-intro">
+          Dites-nous le mois de votre événement, nous sélectionnerons les plus belles fleurs disponibles.
+        </p>
+        <div class="hero-cta-group">
+          <a class="btn btn-primary" href="contact.html">Demander un devis</a>
+          <a class="btn btn-secondary" href="produits.html">Voir nos bouquets</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>
+          © <span id="year"></span> Maison Florale — Fleuriste passionnée |
+          <a href="https://instagram.com/maisonflorale" target="_blank" rel="noreferrer">Instagram</a>
+          |
+          <a href="mentions-legales.html">Mentions légales</a>
+        </p>
+      </div>
+    </footer>
+    <a class="whatsapp-float" href="https://wa.me/33123456789" target="_blank" rel="noreferrer" aria-label="Contacter sur WhatsApp">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.649-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.397z"/></svg>
+    </a>
+    <button class="back-to-top" aria-label="Retour en haut">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+    <a href="contact.html" class="mobile-sticky-cta">Demander un devis</a>
+    <script src="script.js"></script>
+  </body>
+</html>
