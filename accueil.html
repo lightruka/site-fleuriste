@@ -6,16 +6,16 @@
     <title>Maison Florale | Fleuriste</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" href="logo-floral.svg" type="image/svg+xml" />
-    <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;else if(matchMedia('(prefers-color-scheme:dark)').matches)document.documentElement.dataset.theme='dark'})()</script>
   </head>
   <body>
     <header class="site-header">
       <div class="container nav-wrap">
         <a class="logo" href="index.html"
-          ><img class="logo-icon" src="logo-floral.svg" alt="" /><span
+          ><img loading="lazy" class="logo-icon" src="logo-floral.svg" alt="" /><span
             >Maison Florale</span
           ></a
         >
+
         <button class="theme-toggle" aria-label="Mode sombre">🌙</button>
         <button class="menu-btn" aria-label="Ouvrir le menu">☰</button>
         <nav class="nav-links">
@@ -50,9 +50,9 @@
           </div>
         </div>
         <div class="hero-carousel">
-          <img class="active" src="https://images.unsplash.com/photo-1526045478516-99145907023c?auto=format&fit=crop&w=1200&h=600&q=80" alt="Bouquet de fleurs colorées" />
-          <img src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?auto=format&fit=crop&w=1200&h=600&q=80" alt="Composition florale blanche" />
-          <img src="https://images.unsplash.com/photo-1455659817273-f96807779a8a?auto=format&fit=crop&w=1200&h=600&q=80" alt="Bouquet élégant pastel" />
+          <img class="active" fetchpriority="high" src="https://images.unsplash.com/photo-1526045478516-99145907023c?auto=format&fit=crop&w=1200&h=600&q=80" alt="Bouquet de fleurs colorées" />
+          <img loading="lazy" src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?auto=format&fit=crop&w=1200&h=600&q=80" alt="Composition florale blanche" />
+          <img loading="lazy" src="https://images.unsplash.com/photo-1455659817273-f96807779a8a?auto=format&fit=crop&w=1200&h=600&q=80" alt="Bouquet élégant pastel" />
           <div class="carousel-nav">
             <button class="carousel-arrow prev" aria-label="Image précédente">❮</button>
             <button class="carousel-arrow next" aria-label="Image suivante">❯</button>
@@ -201,27 +201,27 @@
         </p>
         <div class="cards">
           <article class="card">
-            <img src="https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=900&q=80" alt="Bouquet best-seller coloré" />
+            <img loading="lazy" src="https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=900&q=80" alt="Bouquet best-seller coloré" />
             <div class="card-body">
               <h3>Explosion de Couleurs</h3>
               <p>Un bouquet lumineux et dynamique, idéal pour un anniversaire.</p>
-              <p class="price-note">A partir de 45 EUR</p>
+              <p class="price-note">À partir de 45 EUR</p>
             </div>
           </article>
           <article class="card">
-            <img src="https://images.unsplash.com/photo-1455659817273-f96807779a8a?auto=format&fit=crop&w=900&q=80" alt="Bouquet blanc raffiné" />
+            <img loading="lazy" src="https://images.unsplash.com/photo-1455659817273-f96807779a8a?auto=format&fit=crop&w=900&q=80" alt="Bouquet blanc raffiné" />
             <div class="card-body">
               <h3>Blanc Signature</h3>
               <p>Une composition chic et intemporelle en tons blancs et verts.</p>
-              <p class="price-note">A partir de 95 EUR</p>
+              <p class="price-note">À partir de 95 EUR</p>
             </div>
           </article>
           <article class="card">
-            <img src="https://images.unsplash.com/photo-1470509037663-253afd7f0f51?auto=format&fit=crop&w=900&q=80" alt="Bouquet naturel et sobre" />
+            <img loading="lazy" src="https://images.unsplash.com/photo-1470509037663-253afd7f0f51?auto=format&fit=crop&w=900&q=80" alt="Bouquet naturel et sobre" />
             <div class="card-body">
-              <h3>Sobriete Naturelle</h3>
+              <h3>Sobriété Naturelle</h3>
               <p>Des teintes douces pour un rendu apaisant et élégant.</p>
-              <p class="price-note">A partir de 60 EUR</p>
+              <p class="price-note">À partir de 60 EUR</p>
             </div>
           </article>
         </div>
@@ -229,25 +229,15 @@
 
       <section class="section">
         <h2>Ce que disent nos clients</h2>
-        <div class="cards reviews-grid">
-          <article class="card">
-            <div class="card-body">
-              <h3>Claire et Julien</h3>
-              <p>"Un travail magnifique pour notre mariage. Bouquet superbe et équipe très attentive."</p>
-            </div>
-          </article>
-          <article class="card">
-            <div class="card-body">
-              <h3>Nadia</h3>
-              <p>"Commande de dernière minute pour un anniversaire, résultat parfait et livraison rapide."</p>
-            </div>
-          </article>
-          <article class="card">
-            <div class="card-body">
-              <h3>Marc</h3>
-              <p>"Merci pour votre accompagnement et votre délicatesse sur une commande de recueillement."</p>
-            </div>
-          </article>
+        <div class="editorial-reviews">
+          <blockquote>
+            <p>"Un travail magnifique pour notre mariage. Bouquet superbe et équipe très attentive."</p>
+            <cite>— Claire et Julien</cite>
+          </blockquote>
+          <blockquote>
+            <p>"Merci pour votre accompagnement et votre délicatesse sur une commande de recueillement."</p>
+            <cite>— Marc</cite>
+          </blockquote>
         </div>
       </section>
 
@@ -335,12 +325,12 @@
         <h2>Suivez-nous sur Instagram</h2>
         <p class="section-intro">Nos dernières créations en images.</p>
         <div class="insta-grid">
-          <a href="https://instagram.com" target="_blank" rel="noreferrer"><img src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?auto=format&fit=crop&w=400&q=80" alt="Création florale" /></a>
-          <a href="https://instagram.com" target="_blank" rel="noreferrer"><img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=400&q=80" alt="Bouquet coloré" /></a>
-          <a href="https://instagram.com" target="_blank" rel="noreferrer"><img src="https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?auto=format&fit=crop&w=400&q=80" alt="Fleurs blanches" /></a>
-          <a href="https://instagram.com" target="_blank" rel="noreferrer"><img src="https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=400&q=80" alt="Composition pastel" /></a>
-          <a href="https://instagram.com" target="_blank" rel="noreferrer"><img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=400&q=80" alt="Bouquet artisanal" /></a>
-          <a href="https://instagram.com" target="_blank" rel="noreferrer"><img src="https://images.unsplash.com/photo-1470509037663-253afd7f0f51?auto=format&fit=crop&w=400&q=80" alt="Arrangement naturel" /></a>
+          <a href="https://instagram.com" target="_blank" rel="noreferrer"><img loading="lazy" src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?auto=format&fit=crop&w=400&q=80" alt="Création florale" /></a>
+          <a href="https://instagram.com" target="_blank" rel="noreferrer"><img loading="lazy" src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=400&q=80" alt="Bouquet coloré" /></a>
+          <a href="https://instagram.com" target="_blank" rel="noreferrer"><img loading="lazy" src="https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?auto=format&fit=crop&w=400&q=80" alt="Fleurs blanches" /></a>
+          <a href="https://instagram.com" target="_blank" rel="noreferrer"><img loading="lazy" src="https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=400&q=80" alt="Composition pastel" /></a>
+          <a href="https://instagram.com" target="_blank" rel="noreferrer"><img loading="lazy" src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=400&q=80" alt="Bouquet artisanal" /></a>
+          <a href="https://instagram.com" target="_blank" rel="noreferrer"><img loading="lazy" src="https://images.unsplash.com/photo-1470509037663-253afd7f0f51?auto=format&fit=crop&w=400&q=80" alt="Arrangement naturel" /></a>
         </div>
         <a class="insta-cta" href="https://instagram.com" target="_blank" rel="noreferrer">
           @maisonflorale → Voir plus sur Instagram
@@ -377,5 +367,7 @@
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
     </button>
     <script src="script.js"></script>
+      <a href="contact.html" class="mobile-sticky-cta">Demander un devis</a>
   </body>
 </html>
+
