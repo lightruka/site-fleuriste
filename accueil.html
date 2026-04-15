@@ -13,6 +13,17 @@
     <script>(function(){if(localStorage.getItem('theme')==='dark')document.documentElement.dataset.theme='dark'})()</script>
   </head>
   <body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress"></div>
+
+    <!-- Falling Petals -->
+    <div class="petals-container">
+      <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+      <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+      <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+      <div class="petal"></div>
+    </div>
+
     <header class="site-header">
       <div class="container nav-wrap">
         <a class="logo" href="accueil.html"
@@ -20,7 +31,6 @@
             >Maison Florale</span
           ></a
         >
-
         <button class="theme-toggle" aria-label="Mode sombre">🌙</button>
         <button class="menu-btn" aria-label="Ouvrir le menu">☰</button>
         <nav class="nav-links">
@@ -35,10 +45,10 @@
     </header>
 
     <main class="container">
-      <!-- Seasonal banner -->
+      <!-- Seasonal banner (filled by JS) -->
       <div class="season-banner" id="season-banner"></div>
 
-      <!-- Hero with carousel -->
+      <!-- 1. Hero — accroche immédiate -->
       <section class="hero">
         <div class="hero-content">
           <h1>L'art floral au service de vos émotions</h1>
@@ -65,7 +75,7 @@
         </div>
       </section>
 
-      <!-- Animated counters -->
+      <!-- 2. Compteurs — crédibilité immédiate -->
       <section class="section">
         <h2>Un fleuriste de confiance</h2>
         <div class="counter-grid">
@@ -88,117 +98,7 @@
         </div>
       </section>
 
-      <section class="section">
-        <h2>Occasions que nous accompagnons</h2>
-        <p class="section-intro">
-          Chaque événement mérite une composition adaptée à son ambiance.
-        </p>
-        <div class="cards">
-          <article class="card">
-            <div class="card-body">
-              <h3>Mariage</h3>
-              <p>Bouquets de mariée, décoration de table et arche florale.</p>
-            </div>
-          </article>
-          <article class="card">
-            <div class="card-body">
-              <h3>Anniversaire</h3>
-              <p>Compositions colorées et formats modulables selon budget.</p>
-            </div>
-          </article>
-          <article class="card">
-            <div class="card-body">
-              <h3>Deuil</h3>
-              <p>Arrangements sobres et respectueux pour rendre hommage.</p>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="section">
-        <h2>Horaires et zone de livraison</h2>
-        <div class="about-grid">
-          <article class="panel">
-            <h3>Horaires boutique</h3>
-            <ul class="contact-list">
-              <li>Lundi au vendredi : 9h00 - 19h00</li>
-              <li>Samedi : 9h00 - 20h00</li>
-              <li>Dimanche : 9h00 - 13h00</li>
-            </ul>
-          </article>
-          <article class="panel">
-            <h3>Livraison locale</h3>
-            <p>
-              Livraison sur Paris et proche couronne. Créneaux express selon
-              disponibilité, retrait en boutique possible toute la journée.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section">
-        <h2>Pourquoi nous choisir ?</h2>
-        <p class="section-intro">
-          Une équipe passionnée, un sens du détail, et des fleurs sélectionnées
-          avec soin pour des créations uniques.
-        </p>
-        <div class="cards">
-          <article class="card">
-            <img
-              src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=900&q=80"
-              alt="Fleurs fraîches"
-            />
-            <div class="card-body">
-              <h3>Fleurs fraîches</h3>
-              <p>Arrivages réguliers et qualité premium toute l'année.</p>
-            </div>
-          </article>
-          <article class="card">
-            <img
-              src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=900&q=80"
-              alt="Composition florale artisanale"
-            />
-            <div class="card-body">
-              <h3>Créations artisanales</h3>
-              <p>Des compositions modernes adaptées à votre style.</p>
-            </div>
-          </article>
-          <article class="card">
-            <img
-              src="https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=900&q=80"
-              alt="Service personnalisé en boutique"
-            />
-            <div class="card-body">
-              <h3>Conseil personnalisé</h3>
-              <p>Un accompagnement sur mesure pour chaque occasion.</p>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="section">
-        <h2>Un aperçu de notre histoire</h2>
-        <div class="about-grid">
-          <article class="panel">
-            <h3>Maison Florale, fleuriste de quartier depuis 12 ans</h3>
-            <p>
-              Née d'une passion familiale, la boutique accompagne chaque moment
-              de vie avec des compositions réalisées à la main, en privilégiant
-              les fleurs de saison et la fraîcheur.
-            </p>
-          </article>
-          <article class="panel">
-            <h3>Notre philosophie</h3>
-            <p>
-              Créer des bouquets élégants, accessibles et personnalisés selon
-              votre occasion, vos couleurs et votre budget, avec un vrai conseil
-              humain en boutique.
-            </p>
-            <a class="btn btn-secondary" href="apropos.html">En savoir plus</a>
-          </article>
-        </div>
-      </section>
-
+      <!-- 3. Best-sellers — le produit dès le début -->
       <section class="section">
         <h2>Nos best-sellers</h2>
         <p class="section-intro">
@@ -232,50 +132,127 @@
         </div>
       </section>
 
+      <!-- 4. Pourquoi nous choisir — argumentation -->
+      <section class="section">
+        <h2>Pourquoi nous choisir ?</h2>
+        <p class="section-intro">
+          Une équipe passionnée, un sens du détail, et des fleurs sélectionnées
+          avec soin pour des créations uniques.
+        </p>
+        <div class="cards">
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=900&q=80" alt="Fleurs fraîches" />
+            <div class="card-body">
+              <h3>Fleurs fraîches</h3>
+              <p>Arrivages réguliers et qualité premium toute l'année.</p>
+            </div>
+          </article>
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=900&q=80" alt="Composition florale artisanale" />
+            <div class="card-body">
+              <h3>Créations artisanales</h3>
+              <p>Des compositions modernes adaptées à votre style.</p>
+            </div>
+          </article>
+          <article class="card">
+            <img src="https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=900&q=80" alt="Service personnalisé en boutique" />
+            <div class="card-body">
+              <h3>Conseil personnalisé</h3>
+              <p>Un accompagnement sur mesure pour chaque occasion.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 5. Occasions — comprendre le scope -->
+      <section class="section">
+        <h2>Occasions que nous accompagnons</h2>
+        <p class="section-intro">
+          Chaque événement mérite une composition adaptée à son ambiance.
+        </p>
+        <div class="cards">
+          <article class="card">
+            <div class="card-body"><h3>Mariage</h3><p>Bouquets de mariée, décoration de table et arche florale.</p></div>
+          </article>
+          <article class="card">
+            <div class="card-body"><h3>Anniversaire</h3><p>Compositions colorées et formats modulables selon budget.</p></div>
+          </article>
+          <article class="card">
+            <div class="card-body"><h3>Deuil</h3><p>Arrangements sobres et respectueux pour rendre hommage.</p></div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 6. Témoignages — preuve sociale -->
       <section class="section">
         <h2>Ce que disent nos clients</h2>
-        <div class="editorial-reviews">
-          <blockquote>
-            <p>"Un travail magnifique pour notre mariage. Bouquet superbe et équipe très attentive."</p>
-            <cite>— Claire et Julien</cite>
-          </blockquote>
-          <blockquote>
-            <p>"Merci pour votre accompagnement et votre délicatesse sur une commande de recueillement."</p>
-            <cite>— Marc</cite>
-          </blockquote>
+        <div class="testimonial-carousel">
+          <div class="testimonial-slide active">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"Un travail magnifique pour notre mariage. Le bouquet était superbe et l'équipe incroyablement attentive à nos envies."</p>
+            <div class="testimonial-author">
+              <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&h=100&q=80" alt="Claire" />
+              <div class="testimonial-info"><strong>Claire et Julien</strong><small>Mariage — Juin 2025</small></div>
+            </div>
+          </div>
+          <div class="testimonial-slide">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"Merci pour votre accompagnement et votre délicatesse sur une commande sensible. Un professionnalisme rare."</p>
+            <div class="testimonial-author">
+              <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100&q=80" alt="Marc" />
+              <div class="testimonial-info"><strong>Marc D.</strong><small>Hommage — Mars 2025</small></div>
+            </div>
+          </div>
+          <div class="testimonial-slide">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"Des bouquets toujours frais et originaux. Ma fleuriste préférée dans le 11e ! Je recommande les yeux fermés."</p>
+            <div class="testimonial-author">
+              <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&h=100&q=80" alt="Sophie" />
+              <div class="testimonial-info"><strong>Sophie L.</strong><small>Cliente régulière</small></div>
+            </div>
+          </div>
+          <div class="testimonial-slide">
+            <div class="testimonial-stars">★★★★☆</div>
+            <p class="testimonial-text">"Superbe composition pour l'anniversaire de ma mère. Les couleurs étaient exactement celles que j'avais demandées."</p>
+            <div class="testimonial-author">
+              <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&h=100&q=80" alt="Thomas" />
+              <div class="testimonial-info"><strong>Thomas R.</strong><small>Anniversaire — Janvier 2026</small></div>
+            </div>
+          </div>
+          <div class="testimonial-nav">
+            <button class="testimonial-dot active" aria-label="Avis 1"></button>
+            <button class="testimonial-dot" aria-label="Avis 2"></button>
+            <button class="testimonial-dot" aria-label="Avis 3"></button>
+            <button class="testimonial-dot" aria-label="Avis 4"></button>
+          </div>
         </div>
       </section>
 
+      <!-- 7. Calendrier floral — découverte & engagement -->
       <section class="section">
-        <h2>La personne derrière la boutique</h2>
-        <div class="about-grid">
-          <article class="panel">
-            <h3>Camille Bernard — Gérante de Maison Florale</h3>
-            <p>
-              Fleuriste passionnée, Camille accompagne chaque client avec une
-              approche humaine et personnalisée. Formée aux techniques
-              traditionnelles puis aux tendances florales contemporaines, elle
-              imagine des créations élégantes adaptées à chaque moment de vie.
-            </p>
-          </article>
-          <article class="panel">
-            <h3>Sa vision</h3>
-            <ul class="contact-list">
-              <li>Mettre l'émotion au cœur de chaque composition.</li>
-              <li>Travailler des palettes naturelles et harmonieuses.</li>
-              <li>Rendre la création florale accessible à tous les budgets.</li>
-              <li>Créer un accueil chaleureux et un conseil de proximité.</li>
-            </ul>
-          </article>
+        <h2>Calendrier floral</h2>
+        <p class="section-intro">Découvrez les fleurs disponibles chaque mois. Cliquez sur un mois pour voir les variétés de saison.</p>
+        <div class="calendar-grid">
+          <div class="calendar-month" data-month="janvier"><span class="month-emoji">❄️</span><span class="month-name">Janvier</span></div>
+          <div class="calendar-month" data-month="fevrier"><span class="month-emoji">💐</span><span class="month-name">Février</span></div>
+          <div class="calendar-month" data-month="mars"><span class="month-emoji">🌷</span><span class="month-name">Mars</span></div>
+          <div class="calendar-month" data-month="avril"><span class="month-emoji">🌸</span><span class="month-name">Avril</span></div>
+          <div class="calendar-month" data-month="mai"><span class="month-emoji">🌺</span><span class="month-name">Mai</span></div>
+          <div class="calendar-month" data-month="juin"><span class="month-emoji">🌹</span><span class="month-name">Juin</span></div>
+          <div class="calendar-month" data-month="juillet"><span class="month-emoji">🌻</span><span class="month-name">Juillet</span></div>
+          <div class="calendar-month" data-month="aout"><span class="month-emoji">☀️</span><span class="month-name">Août</span></div>
+          <div class="calendar-month" data-month="septembre"><span class="month-emoji">🍂</span><span class="month-name">Septembre</span></div>
+          <div class="calendar-month" data-month="octobre"><span class="month-emoji">🎃</span><span class="month-name">Octobre</span></div>
+          <div class="calendar-month" data-month="novembre"><span class="month-emoji">🍁</span><span class="month-name">Novembre</span></div>
+          <div class="calendar-month" data-month="decembre"><span class="month-emoji">🎄</span><span class="month-name">Décembre</span></div>
         </div>
+        <div id="calendar-detail" class="calendar-detail" style="display:none;"></div>
       </section>
 
-      <!-- Conseils floraux -->
+      <!-- 8. Conseils — valeur ajoutée -->
       <section class="section">
         <h2>Conseils floraux</h2>
-        <p class="section-intro">
-          Quelques astuces pour profiter de vos fleurs plus longtemps.
-        </p>
+        <p class="section-intro">Quelques astuces pour profiter de vos fleurs plus longtemps.</p>
         <div class="cards">
           <article class="card tips-card">
             <div class="card-body">
@@ -298,34 +275,81 @@
         </div>
       </section>
 
+      <!-- 9. Notre histoire — qui sommes-nous (consolidé) -->
       <section class="section">
-        <h2>Questions fréquentes</h2>
-        <div class="faq-list">
+        <h2>Qui sommes-nous</h2>
+        <div class="about-grid">
           <article class="panel">
-            <h3>Faites-vous des créations sur mesure ?</h3>
+            <h3>Maison Florale, fleuriste de quartier depuis 12 ans</h3>
             <p>
-              Oui, nous adaptons chaque bouquet à votre occasion, vos couleurs
-              et votre budget.
+              Née d'une passion familiale, la boutique accompagne chaque moment
+              de vie avec des compositions réalisées à la main, en privilégiant
+              les fleurs de saison et la fraîcheur.
             </p>
+            <a class="btn btn-secondary" href="apropos.html">En savoir plus</a>
           </article>
           <article class="panel">
-            <h3>Quel est le délai pour commander ?</h3>
+            <h3>Camille Bernard — Gérante</h3>
             <p>
-              En général 24h à l'avance, mais nous traitons aussi des demandes
-              urgentes selon disponibilité.
-            </p>
-          </article>
-          <article class="panel">
-            <h3>Livrez-vous à domicile ?</h3>
-            <p>
-              Oui, sur Paris et proches alentours. Contactez-nous pour vérifier
-              votre zone.
+              Fleuriste passionnée, Camille accompagne chaque client avec une
+              approche humaine et personnalisée. Formée aux techniques
+              traditionnelles puis aux tendances florales contemporaines, elle
+              imagine des créations élégantes adaptées à chaque moment de vie.
             </p>
           </article>
         </div>
       </section>
 
-      <!-- Instagram feed -->
+      <!-- 10. Horaires & livraison — infos pratiques -->
+      <section class="section">
+        <h2>Horaires et zone de livraison</h2>
+        <div class="about-grid">
+          <article class="panel">
+            <h3>Horaires boutique</h3>
+            <ul class="contact-list">
+              <li>Lundi au vendredi : 9h00 - 19h00</li>
+              <li>Samedi : 9h00 - 20h00</li>
+              <li>Dimanche : 9h00 - 13h00</li>
+            </ul>
+          </article>
+          <article class="panel">
+            <h3>Livraison locale</h3>
+            <p>
+              Livraison sur Paris et proche couronne. Créneaux express selon
+              disponibilité, retrait en boutique possible toute la journée.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 11. FAQ — lever les dernières objections -->
+      <section class="section">
+        <h2>Questions fréquentes</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question"><span>Faites-vous des créations sur mesure ?</span><span class="faq-icon">+</span></button>
+            <div class="faq-answer"><p>Oui, nous adaptons chaque bouquet à votre occasion, vos couleurs et votre budget. Venez en boutique ou contactez-nous pour un échange personnalisé.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question"><span>Quel est le délai pour commander ?</span><span class="faq-icon">+</span></button>
+            <div class="faq-answer"><p>En général 24h à l'avance nous suffit, mais nous traitons aussi des demandes urgentes selon la disponibilité des fleurs. Pour les mariages, prévoyez 2 à 3 mois.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question"><span>Livrez-vous à domicile ?</span><span class="faq-icon">+</span></button>
+            <div class="faq-answer"><p>Oui, nous livrons sur Paris et les communes proches. Contactez-nous pour vérifier votre zone et choisir un créneau.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question"><span>Quels moyens de paiement acceptez-vous ?</span><span class="faq-icon">+</span></button>
+            <div class="faq-answer"><p>Nous acceptons la carte bancaire, les espèces et le virement. Le paiement se fait au retrait ou à la livraison.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question"><span>Proposez-vous des abonnements floraux ?</span><span class="faq-icon">+</span></button>
+            <div class="faq-answer"><p>Oui ! Nous proposons des formules hebdomadaires ou mensuelles pour recevoir un bouquet frais à domicile ou au bureau. Contactez-nous pour les tarifs.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 12. Instagram — social -->
       <section class="section">
         <h2>Suivez-nous sur Instagram</h2>
         <p class="section-intro">Nos dernières créations en images.</p>
@@ -342,6 +366,7 @@
         </a>
       </section>
 
+      <!-- 13. CTA final -->
       <section class="section final-cta">
         <h2>Prêt à fleurir votre événement ?</h2>
         <p class="section-intro">
@@ -372,6 +397,24 @@
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
     </button>
     <a href="contact.html" class="mobile-sticky-cta">Demander un devis</a>
+
+    <!-- Welcome Popup -->
+    <div class="welcome-popup-overlay">
+      <div class="welcome-popup">
+        <button class="popup-close" aria-label="Fermer">&times;</button>
+        <div class="popup-emoji">🌸</div>
+        <h3>Bienvenue chez Maison Florale</h3>
+        <p>Inscrivez-vous et recevez <strong>10% de réduction</strong> sur votre première commande.</p>
+        <form class="popup-form">
+          <div class="popup-input-group">
+            <input type="email" placeholder="votre@email.fr" required />
+            <button class="btn btn-primary" type="submit">S'inscrire</button>
+          </div>
+        </form>
+        <button class="popup-skip">Non merci, peut-être plus tard</button>
+      </div>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>

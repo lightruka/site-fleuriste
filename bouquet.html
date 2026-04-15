@@ -12,6 +12,7 @@
     <script>(function(){if(localStorage.getItem('theme')==='dark')document.documentElement.dataset.theme='dark'})()</script>
   </head>
   <body>
+    <div class="scroll-progress"></div>
     <header class="site-header">
       <div class="container nav-wrap">
         <a class="logo" href="accueil.html"
@@ -47,6 +48,11 @@
             Description détaillée du bouquet sélectionné.
           </p>
           <p class="price-note" id="detail-price">Budget indicatif : --</p>
+          <div class="share-bar">
+            <a class="share-btn" id="share-whatsapp" href="#" target="_blank" rel="noreferrer">📱 WhatsApp</a>
+            <button class="share-btn" id="share-copy-link">📋 Copier le lien</button>
+            <a class="share-btn" href="https://instagram.com" target="_blank" rel="noreferrer">📷 Instagram</a>
+          </div>
         </article>
       </section>
     </main>

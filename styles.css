@@ -1238,3 +1238,529 @@ textarea {
   color: var(--muted);
   line-height: 1.7;
 }
+
+/* ══════════════════════════════════════════
+   NEW FEATURES
+   ══════════════════════════════════════════ */
+
+/* ── Scroll Progress Bar ── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--vert-sauge), var(--bordeaux), var(--rose-poudre));
+  z-index: 999;
+  transition: width 0.05s linear;
+}
+
+/* ── Page Fade-In Transition ── */
+body {
+  animation: pageFadeIn 0.5s ease both;
+}
+
+@keyframes pageFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ── Enhanced Reveal Animations ── */
+.reveal-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered delays */
+.reveal-card:nth-child(1) { transition-delay: 0s; }
+.reveal-card:nth-child(2) { transition-delay: 0.1s; }
+.reveal-card:nth-child(3) { transition-delay: 0.2s; }
+.reveal-card:nth-child(4) { transition-delay: 0.15s; }
+.reveal-card:nth-child(5) { transition-delay: 0.25s; }
+.reveal-card:nth-child(6) { transition-delay: 0.3s; }
+
+/* ── Falling Petals ── */
+.petals-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.petal {
+  position: absolute;
+  top: -40px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50% 0 50% 50%;
+  opacity: 0.35;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg) translateX(0);
+    opacity: 0;
+  }
+  10% { opacity: 0.35; }
+  90% { opacity: 0.25; }
+  100% {
+    transform: translateY(105vh) rotate(720deg) translateX(80px);
+    opacity: 0;
+  }
+}
+
+.petal:nth-child(1)  { left:  5%; animation-duration: 12s; animation-delay: 0s; background: #f4c2c2; width: 12px; height: 12px; }
+.petal:nth-child(2)  { left: 15%; animation-duration: 15s; animation-delay: 2s; background: #e8a0a0; width: 10px; height: 10px; }
+.petal:nth-child(3)  { left: 25%; animation-duration: 11s; animation-delay: 4s; background: #f9d4d4; width: 16px; height: 16px; }
+.petal:nth-child(4)  { left: 38%; animation-duration: 14s; animation-delay: 1s; background: #d4e8d4; width: 11px; height: 11px; }
+.petal:nth-child(5)  { left: 50%; animation-duration: 13s; animation-delay: 3s; background: #f4c2c2; width: 13px; height: 13px; }
+.petal:nth-child(6)  { left: 62%; animation-duration: 16s; animation-delay: 5s; background: #e8d0d0; width: 9px; height: 9px; }
+.petal:nth-child(7)  { left: 72%; animation-duration: 12s; animation-delay: 2.5s; background: #c8dcc8; width: 14px; height: 14px; }
+.petal:nth-child(8)  { left: 85%; animation-duration: 14s; animation-delay: 1.5s; background: #f9e4e4; width: 12px; height: 12px; }
+.petal:nth-child(9)  { left: 92%; animation-duration: 11s; animation-delay: 4.5s; background: #dbbaba; width: 10px; height: 10px; }
+.petal:nth-child(10) { left: 45%; animation-duration: 17s; animation-delay: 6s; background: #bdd4bd; width: 15px; height: 15px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .petals-container { display: none; }
+  body { animation: none; }
+}
+
+@media (max-width: 700px) {
+  .petal { opacity: 0.2; }
+  .petal:nth-child(n+7) { display: none; }
+}
+
+/* ── FAQ Accordion ── */
+.faq-item {
+  background: var(--panel-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.faq-item:hover {
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+}
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  font-weight: 700;
+  color: var(--vert-sauge-dark);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.05rem;
+  gap: 12px;
+  transition: color 0.25s ease;
+}
+
+.faq-question:hover {
+  color: var(--bordeaux);
+}
+
+.faq-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--rose-poudre);
+  color: var(--bordeaux);
+  display: grid;
+  place-items: center;
+  font-size: 1.1rem;
+  transition: transform 0.35s ease, background 0.25s ease;
+}
+
+.faq-item.open .faq-icon {
+  transform: rotate(45deg);
+  background: var(--vert-sauge);
+  color: #fff;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+  padding: 0 20px;
+}
+
+.faq-item.open .faq-answer {
+  max-height: 300px;
+  padding: 0 20px 18px;
+}
+
+.faq-answer p {
+  margin: 0;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+/* ── Testimonial Carousel ── */
+.testimonial-carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--panel-bg);
+  box-shadow: var(--shadow);
+  padding: 32px 28px;
+  min-height: 200px;
+}
+
+.testimonial-slide {
+  display: none;
+  animation: testimonialFade 0.5s ease;
+}
+
+.testimonial-slide.active {
+  display: block;
+}
+
+@keyframes testimonialFade {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.testimonial-stars {
+  color: #f0ad4e;
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+
+.testimonial-text {
+  font-style: italic;
+  font-size: 1.08rem;
+  line-height: 1.7;
+  color: var(--text);
+  margin: 0 0 16px;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.testimonial-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--rose-poudre);
+}
+
+.testimonial-info strong {
+  display: block;
+  color: var(--vert-sauge-dark);
+}
+
+.testimonial-info small {
+  color: var(--muted);
+}
+
+.testimonial-nav {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.testimonial-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--vert-sauge);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.25s ease;
+}
+
+.testimonial-dot.active {
+  background: var(--vert-sauge);
+}
+
+/* ── Welcome Popup ── */
+.welcome-popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 20px;
+  animation: popupOverlayIn 0.3s ease;
+}
+
+.welcome-popup-overlay.show {
+  display: flex;
+}
+
+@keyframes popupOverlayIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.welcome-popup {
+  background: var(--panel-bg);
+  border-radius: var(--radius);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  max-width: 420px;
+  width: 100%;
+  padding: 32px 28px;
+  text-align: center;
+  position: relative;
+  animation: popupSlideIn 0.4s ease;
+}
+
+@keyframes popupSlideIn {
+  from { opacity: 0; transform: translateY(30px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.welcome-popup .popup-emoji {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.welcome-popup h3 {
+  color: var(--vert-sauge-dark);
+  margin: 0 0 8px;
+  font-size: 1.4rem;
+}
+
+.welcome-popup p {
+  color: var(--muted);
+  margin: 0 0 18px;
+  line-height: 1.6;
+}
+
+.welcome-popup .popup-input-group {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.welcome-popup .popup-input-group input {
+  flex: 1;
+  border-radius: 999px;
+}
+
+.welcome-popup .popup-input-group .btn {
+  white-space: nowrap;
+}
+
+.popup-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  border: none;
+  background: none;
+  font-size: 1.4rem;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.25s ease;
+}
+
+.popup-close:hover {
+  color: var(--bordeaux);
+}
+
+.popup-skip {
+  color: var(--muted);
+  font-size: 0.85rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  text-decoration: underline;
+  font-family: inherit;
+}
+
+/* ── Share Buttons ── */
+.share-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid var(--header-border);
+  background: var(--card-bg);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  font-family: inherit;
+}
+
+.share-btn:hover {
+  background: var(--rose-poudre);
+  transform: translateY(-1px);
+}
+
+.share-btn.copied {
+  background: var(--vert-sauge);
+  color: #fff;
+  border-color: var(--vert-sauge);
+}
+
+/* ── Floral Calendar ── */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.calendar-month {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.calendar-month:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.calendar-month.active {
+  border-color: var(--vert-sauge);
+  background: var(--final-cta-bg);
+}
+
+.calendar-month .month-emoji {
+  font-size: 1.6rem;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.calendar-month .month-name {
+  font-weight: 700;
+  color: var(--vert-sauge-dark);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 0.95rem;
+}
+
+.calendar-detail {
+  margin-top: 18px;
+  background: var(--panel-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+  animation: fadeUp 0.4s ease;
+}
+
+.calendar-detail h3 {
+  margin: 0 0 10px;
+  color: var(--vert-sauge-dark);
+}
+
+.calendar-flowers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.flower-tag {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--rose-poudre);
+  color: var(--bordeaux);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .calendar-grid { grid-template-columns: repeat(3, 1fr); }
+  .testimonial-carousel { padding: 24px 18px; }
+  .testimonial-text { font-size: 1rem; }
+  .welcome-popup { padding: 24px 20px; }
+  .welcome-popup .popup-input-group { flex-direction: column; }
+  .faq-question { padding: 16px 18px; font-size: 1rem; }
+  .season-banner { font-size: 0.9rem; line-height: 1.5; }
+}
+
+@media (max-width: 700px) {
+  .calendar-grid { grid-template-columns: repeat(2, 1fr); }
+  .calendar-month { padding: 12px; }
+  .calendar-month .month-emoji { font-size: 1.3rem; }
+  .calendar-month .month-name { font-size: 0.85rem; }
+  .calendar-detail { padding: 18px 14px; }
+  .calendar-detail h3 { font-size: 1.1rem; }
+
+  .testimonial-carousel { padding: 20px 14px; min-height: 180px; }
+  .testimonial-text { font-size: 0.95rem; line-height: 1.6; }
+  .testimonial-avatar { width: 38px; height: 38px; }
+  .testimonial-stars { font-size: 1rem; }
+
+  .faq-question { padding: 14px 16px; font-size: 0.95rem; gap: 8px; }
+  .faq-icon { width: 24px; height: 24px; font-size: 0.95rem; }
+  .faq-answer p { font-size: 0.93rem; }
+
+  .welcome-popup { max-width: 340px; padding: 22px 18px; }
+  .welcome-popup .popup-emoji { font-size: 2rem; }
+  .welcome-popup h3 { font-size: 1.2rem; }
+  .welcome-popup p { font-size: 0.9rem; }
+
+  .season-banner { font-size: 0.85rem; padding: 10px 14px; }
+
+  .share-btn { min-height: 40px; padding: 10px 14px; font-size: 0.85rem; }
+
+  .flower-tag { font-size: 0.8rem; padding: 5px 10px; }
+
+  .scroll-progress { height: 2px; }
+}
+
+@media (max-width: 480px) {
+  .calendar-grid { grid-template-columns: 1fr; }
+  .calendar-month { padding: 14px; }
+
+  .share-bar { flex-direction: column; }
+  .share-btn { width: 100%; justify-content: center; }
+
+  .testimonial-carousel { padding: 18px 12px; min-height: 160px; }
+  .testimonial-text { font-size: 0.9rem; }
+  .testimonial-author { gap: 8px; }
+
+  .welcome-popup { max-width: 100%; margin: 0 10px; padding: 20px 16px; }
+
+  .faq-question { padding: 12px 14px; }
+
+  .calendar-detail { padding: 14px 12px; }
+  .calendar-flowers { gap: 6px; }
+  .flower-tag { font-size: 0.78rem; padding: 4px 8px; }
+}

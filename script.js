@@ -223,6 +223,13 @@ if (detailImage && detailCategory && detailName && detailDescription && detailPr
     detailDescription.textContent = selected.description;
     detailPrice.textContent = `Budget indicatif : ${selected.price}`;
     detailCategory.textContent = selected.category.charAt(0).toUpperCase() + selected.category.slice(1);
+
+    // Update WhatsApp share link
+    const shareWA = document.getElementById("share-whatsapp");
+    if (shareWA) {
+      const msg = encodeURIComponent(`Regarde ce bouquet "${selected.name}" chez Maison Florale !\n${window.location.href}`);
+      shareWA.href = `https://wa.me/?text=${msg}`;
+    }
   }
 }
 
@@ -347,21 +354,21 @@ const seasonBanner = document.getElementById("season-banner");
 if (seasonBanner) {
   const m = new Date().getMonth();
   const data = [
-    ["❄️", "Hiver", "Amaryllis, hellébores, anémones"],
-    ["❄️", "Hiver", "Amaryllis, hellébores, anémones"],
-    ["🌷", "Printemps", "Pivoines, renoncules, lilas, tulipes"],
-    ["🌷", "Printemps", "Pivoines, renoncules, lilas, tulipes"],
-    ["🌷", "Printemps", "Pivoines, renoncules, lilas, tulipes"],
-    ["🌻", "Été", "Tournesols, lavande, dahlias, delphiniums"],
-    ["🌻", "Été", "Tournesols, lavande, dahlias, delphiniums"],
-    ["🌻", "Été", "Tournesols, lavande, dahlias, delphiniums"],
-    ["🍂", "Automne", "Chrysanthèmes, dahlias, roses d'automne"],
-    ["🍂", "Automne", "Chrysanthèmes, dahlias, roses d'automne"],
-    ["🍂", "Automne", "Chrysanthèmes, dahlias, roses d'automne"],
-    ["❄️", "Hiver", "Amaryllis, hellébores, anémones"],
+    ["❄️", "Hiver", "Amaryllis, hellébores, anémones", "Les fleurs d'hiver subliment vos intérieurs avec élégance"],
+    ["❄️", "Hiver", "Amaryllis, hellébores, anémones", "Créez une ambiance chaleureuse avec nos compositions hivernales"],
+    ["🌷", "Printemps", "Pivoines, renoncules, lilas, tulipes", "C'est la saison rêvée pour offrir pivoines et tulipes !"],
+    ["🌷", "Printemps", "Pivoines, renoncules, lilas, tulipes", "Les pivoines sont de retour — profitez-en vite !"],
+    ["🌷", "Printemps", "Pivoines, renoncules, lilas, tulipes", "Muguet, lilas et pivoines : le trio magique du printemps"],
+    ["🌻", "Été", "Tournesols, lavande, dahlias, delphiniums", "Couleurs solaires et parfums envoûtants pour vos bouquets d'été"],
+    ["🌻", "Été", "Tournesols, lavande, dahlias, delphiniums", "Tournesols et lavande illuminent vos plus beaux événements"],
+    ["🌻", "Été", "Tournesols, lavande, dahlias, delphiniums", "Profitez de l'abondance estivale pour des compositions généreuses"],
+    ["🍂", "Automne", "Chrysanthèmes, dahlias, roses d'automne", "Tons cuivrés et orangés pour des bouquets chaleureux"],
+    ["🍂", "Automne", "Chrysanthèmes, dahlias, roses d'automne", "L'automne flamboie — des compositions aux couleurs de saison"],
+    ["🍂", "Automne", "Chrysanthèmes, dahlias, roses d'automne", "Dahlias et chrysanthèmes, les stars de l'arrière-saison"],
+    ["❄️", "Hiver", "Amaryllis, hellébores, anémones", "Ambiance festive : rouges profonds, verts et dorés"],
   ];
-  const [icon, name, flowers] = data[m];
-  seasonBanner.innerHTML = `${icon} <strong>${name}</strong> — Fleurs de saison : ${flowers}`;
+  const [icon, name, flowers, catchphrase] = data[m];
+  seasonBanner.innerHTML = `${icon} <strong>${name}</strong> — ${catchphrase}`;
 }
 
 // ── Gallery Filters ──
@@ -409,4 +416,184 @@ if (lightbox && lightboxImg) {
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && lightbox.classList.contains("open")) closeLB();
   });
+}
+
+// ══════════════════════════════════════════
+// NEW FEATURES
+// ══════════════════════════════════════════
+
+// ── Scroll Progress Bar ──
+const scrollProgress = document.querySelector(".scroll-progress");
+if (scrollProgress) {
+  window.addEventListener("scroll", () => {
+    const docH = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docH > 0 ? (window.scrollY / docH) * 100 : 0;
+    scrollProgress.style.width = pct + "%";
+  });
+}
+
+// ── FAQ Accordion ──
+document.querySelectorAll(".faq-question").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const item = btn.closest(".faq-item");
+    const wasOpen = item.classList.contains("open");
+    // Close all
+    document.querySelectorAll(".faq-item.open").forEach((el) => el.classList.remove("open"));
+    // Toggle clicked
+    if (!wasOpen) item.classList.add("open");
+  });
+});
+
+// ── Testimonial Carousel ──
+const testimonialCarousel = document.querySelector(".testimonial-carousel");
+if (testimonialCarousel) {
+  const slides = testimonialCarousel.querySelectorAll(".testimonial-slide");
+  const dots = testimonialCarousel.querySelectorAll(".testimonial-dot");
+  let currentTestimonial = 0;
+  let testimonialTimer;
+
+  const showTestimonial = (i) => {
+    slides.forEach((s) => s.classList.remove("active"));
+    dots.forEach((d) => d.classList.remove("active"));
+    slides[i].classList.add("active");
+    dots[i].classList.add("active");
+    currentTestimonial = i;
+  };
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener("click", () => {
+      clearInterval(testimonialTimer);
+      showTestimonial(i);
+      startTestimonialAuto();
+    });
+  });
+
+  const startTestimonialAuto = () => {
+    testimonialTimer = setInterval(() => {
+      showTestimonial((currentTestimonial + 1) % slides.length);
+    }, 6000);
+  };
+
+  showTestimonial(0);
+  startTestimonialAuto();
+}
+
+// ── Welcome Popup ──
+const popupOverlay = document.querySelector(".welcome-popup-overlay");
+if (popupOverlay && !localStorage.getItem("popup-dismissed")) {
+  const closePopup = () => {
+    popupOverlay.classList.remove("show");
+    localStorage.setItem("popup-dismissed", "true");
+  };
+
+  // Show after 4 seconds
+  setTimeout(() => {
+    popupOverlay.classList.add("show");
+  }, 4000);
+
+  const closeBtn = popupOverlay.querySelector(".popup-close");
+  const skipBtn = popupOverlay.querySelector(".popup-skip");
+  const popupForm = popupOverlay.querySelector(".popup-form");
+
+  if (closeBtn) closeBtn.addEventListener("click", closePopup);
+  if (skipBtn) skipBtn.addEventListener("click", closePopup);
+  if (popupForm) {
+    popupForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const emailInput = popupForm.querySelector("input");
+      if (emailInput && emailInput.value) {
+        popupForm.innerHTML = '<p style="color:var(--vert-sauge-dark);font-weight:700;">✓ Merci ! Vous recevrez nos offres.</p>';
+        setTimeout(closePopup, 2000);
+      }
+    });
+  }
+
+  popupOverlay.addEventListener("click", (e) => {
+    if (e.target === popupOverlay) closePopup();
+  });
+}
+
+// ── Enhanced Card Reveal with Stagger ──
+const cardRevealObs = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        cardRevealObs.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.08 }
+);
+
+document.querySelectorAll(".card, .panel, .counter-item, .faq-item, .calendar-month").forEach((el) => {
+  const rect = el.getBoundingClientRect();
+  if (rect.top > window.innerHeight * 0.7) {
+    el.classList.add("reveal-card");
+    cardRevealObs.observe(el);
+  }
+});
+
+// ── Share Buttons (bouquet page) ──
+const copyLinkBtn = document.getElementById("share-copy-link");
+if (copyLinkBtn) {
+  copyLinkBtn.addEventListener("click", () => {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      copyLinkBtn.classList.add("copied");
+      copyLinkBtn.textContent = "✓ Lien copié !";
+      setTimeout(() => {
+        copyLinkBtn.classList.remove("copied");
+        copyLinkBtn.textContent = "📋 Copier le lien";
+      }, 2500);
+    });
+  });
+}
+
+// ── Floral Calendar ──
+const calendarMonths = document.querySelectorAll(".calendar-month");
+const calendarDetail = document.getElementById("calendar-detail");
+
+const calendarData = {
+  janvier:    { emoji: "❄️", flowers: ["Amaryllis", "Hellébore", "Anémone", "Renoncule", "Tulipe"], tip: "L'hiver impose ses teintes profondes. Préférez les tons bordeaux et blancs pour des compositions élégantes." },
+  fevrier:    { emoji: "💐", flowers: ["Tulipe", "Renoncule", "Mimosa", "Jacinthe", "Iris"], tip: "Le mimosa illumine l'hiver. Idéal pour la Saint-Valentin avec des bouquets ronds et parfumés." },
+  mars:       { emoji: "🌷", flowers: ["Narcisse", "Jonquille", "Tulipe", "Anémone", "Renoncule"], tip: "Le printemps s'annonce ! Les premières fleurs champêtres reviennent pour des bouquets frais et colorés." },
+  avril:      { emoji: "🌸", flowers: ["Pivoine", "Lilas", "Muguet", "Renoncule", "Fritillaire"], tip: "La saison des pivoines commence enfin. Compositions romantiques et parfumées au rendez-vous." },
+  mai:        { emoji: "🌺", flowers: ["Pivoine", "Rose de jardin", "Lilas", "Muguet", "Clématite"], tip: "Le mois du muguet et des pivoines en pleine gloire. Parfait pour les mariages de printemps." },
+  juin:       { emoji: "🌹", flowers: ["Rose", "Pivoine", "Delphinium", "Nigelle", "Lupin"], tip: "Les roses sont au sommet de leur beauté. Compositions opulentes pour mariages et jardins." },
+  juillet:    { emoji: "🌻", flowers: ["Tournesol", "Lavande", "Dahlia", "Glaïeul", "Agapanthe"], tip: "Couleurs chaudes et solaires. Les tournesols apportent joie et énergie à vos intérieurs." },
+  aout:       { emoji: "☀️", flowers: ["Dahlia", "Zinnia", "Échinacée", "Glaïeul", "Lys"], tip: "Les dahlias se déclinent en mille formes et couleurs. Profitez de l'abondance estivale." },
+  septembre:  { emoji: "🍂", flowers: ["Dahlia", "Aster", "Chrysanthème", "Rose d'automne", "Sédum"], tip: "Les teintes automnales arrivent. Compositions chaleureuses dans les tons cuivrés et orangés." },
+  octobre:    { emoji: "🎃", flowers: ["Chrysanthème", "Rose", "Aster", "Cosmos", "Baies"], tip: "L'automne flamboyant. Rajoutez des baies et branches pour des compositions texturées." },
+  novembre:   { emoji: "🍁", flowers: ["Chrysanthème", "Hellébore", "Cyclamen", "Bruyère", "Skimmia"], tip: "La transition vers l'hiver. Les chrysanthèmes de Toussaint et les premières hellébores." },
+  decembre:   { emoji: "🎄", flowers: ["Amaryllis", "Rose de Noël", "Houx", "Eucalyptus", "Sapin"], tip: "Ambiance festive avec rouges profonds, verts et dorés. L'amaryllis est la reine de décembre." }
+};
+
+if (calendarMonths.length && calendarDetail) {
+  const showMonth = (monthEl) => {
+    const key = monthEl.dataset.month;
+    const data = calendarData[key];
+    if (!data) return;
+
+    calendarMonths.forEach((m) => m.classList.remove("active"));
+    monthEl.classList.add("active");
+
+    calendarDetail.innerHTML = `
+      <h3>${data.emoji} Fleurs de ${key.charAt(0).toUpperCase() + key.slice(1)}</h3>
+      <p>${data.tip}</p>
+      <div class="calendar-flowers">
+        ${data.flowers.map(f => `<span class="flower-tag">${f}</span>`).join("")}
+      </div>
+    `;
+    calendarDetail.style.display = "block";
+  };
+
+  calendarMonths.forEach((m) => {
+    m.addEventListener("click", () => showMonth(m));
+  });
+
+  // Auto-select current month
+  const monthNames = Object.keys(calendarData);
+  const currentMonthIndex = new Date().getMonth();
+  const currentMonthEl = calendarMonths[currentMonthIndex];
+  if (currentMonthEl) showMonth(currentMonthEl);
 }
