@@ -1,3 +1,4 @@
+// ── Menu Toggle ──
 const menuBtn = document.querySelector(".menu-btn");
 const navLinks = document.querySelector(".nav-links");
 
@@ -15,23 +16,30 @@ if (menuBtn && navLinks) {
   });
 }
 
+// ── Year ──
 const yearNode = document.getElementById("year");
 if (yearNode) {
   yearNode.textContent = new Date().getFullYear();
 }
 
+// ── Contact Form with visual confirmation ──
 const form = document.getElementById("contact-form");
+const formSuccess = document.getElementById("form-success");
+
 if (form) {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
-    alert("Merci pour votre message. Nous vous répondrons rapidement.");
+    if (formSuccess) {
+      form.style.display = "none";
+      formSuccess.classList.add("show");
+    } else {
+      alert("Merci pour votre message. Nous vous répondrons rapidement.");
+    }
     form.reset();
   });
 }
 
-<<<<<<< HEAD
-=======
-// Dark mode toggle
+// ── Dark Mode Toggle ──
 const themeToggle = document.querySelector(".theme-toggle");
 const htmlRoot = document.documentElement;
 
@@ -60,27 +68,23 @@ if (themeToggle) {
   });
 }
 
->>>>>>> d9b7962347ba3a00be57375af8ef3489846c19d0
+// ── Bouquet Data (products) ──
 const bouquetData = {
   mariage: [
     {
       id: "pastel-elegance",
-      name: "Pastel Elegance",
-      image:
-        "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=1200&q=80",
+      name: "Pastel Élégance",
+      image: "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=1200&q=80",
       short: "Roses branchues, pivoines et lisianthus.",
-      description:
-        "Un bouquet romantique aux tons poudres, ideal pour mariage civil ou ceremonie.",
+      description: "Un bouquet romantique aux tons poudrés, idéal pour mariage civil ou cérémonie.",
       price: "85 EUR - 120 EUR",
     },
     {
       id: "blanc-signature",
       name: "Blanc Signature",
-      image:
-        "https://images.unsplash.com/photo-1487530811176-3780de880c2d?auto=format&fit=crop&w=1200&q=80",
+      image: "https://images.unsplash.com/photo-1487530811176-3780de880c2d?auto=format&fit=crop&w=1200&q=80",
       short: "Renoncules blanches et feuillage olive.",
-      description:
-        "Composition chic en blanc et vert, elegante et intemporelle pour un decor raffine.",
+      description: "Composition chic en blanc et vert, élégante et intemporelle pour un décor raffiné.",
       price: "95 EUR - 140 EUR",
     },
   ],
@@ -88,21 +92,17 @@ const bouquetData = {
     {
       id: "explosion-couleurs",
       name: "Explosion de Couleurs",
-      image:
-        "https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1200&q=80",
-      short: "Germinis, roses spray et alstroemeres.",
-      description:
-        "Bouquet vif et joyeux pour celebrer les moments festifs avec une palette coloree.",
+      image: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1200&q=80",
+      short: "Germinis, roses spray et alstroemères.",
+      description: "Bouquet vif et joyeux pour célébrer les moments festifs avec une palette colorée.",
       price: "45 EUR - 75 EUR",
     },
     {
       id: "rose-poudre-chic",
-      name: "Rose Poudre Chic",
-      image:
-        "https://images.unsplash.com/photo-1487070183336-b863922373d4?auto=format&fit=crop&w=1200&q=80",
-      short: "Roses garden, oeillets premium et wax flower.",
-      description:
-        "Creation douce et elegante, parfaite pour anniversaire ou remerciement raffine.",
+      name: "Rose Poudré Chic",
+      image: "https://images.unsplash.com/photo-1487070183336-b863922373d4?auto=format&fit=crop&w=1200&q=80",
+      short: "Roses garden, œillets premium et wax flower.",
+      description: "Création douce et élégante, parfaite pour anniversaire ou remerciement raffiné.",
       price: "55 EUR - 90 EUR",
     },
   ],
@@ -110,26 +110,23 @@ const bouquetData = {
     {
       id: "hommage-blanc",
       name: "Hommage Blanc",
-      image:
-        "https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?auto=format&fit=crop&w=1200&q=80",
-      short: "Lys, roses blanches et chrysanthemes.",
-      description:
-        "Arrangement sobre et lumineux pour rendre hommage avec delicatesse et respect.",
+      image: "https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?auto=format&fit=crop&w=1200&q=80",
+      short: "Lys, roses blanches et chrysanthèmes.",
+      description: "Arrangement sobre et lumineux pour rendre hommage avec délicatesse et respect.",
       price: "70 EUR - 110 EUR",
     },
     {
       id: "sobriete-naturelle",
-      name: "Sobriete Naturelle",
-      image:
-        "https://images.unsplash.com/photo-1470509037663-253afd7f0f51?auto=format&fit=crop&w=1200&q=80",
-      short: "Tons creme et verts, composition apaisante.",
-      description:
-        "Composition epuree aux tons naturels pour un accompagnement discret et harmonieux.",
+      name: "Sobriété Naturelle",
+      image: "https://images.unsplash.com/photo-1470509037663-253afd7f0f51?auto=format&fit=crop&w=1200&q=80",
+      short: "Tons crème et verts, composition apaisante.",
+      description: "Composition épurée aux tons naturels pour un accompagnement discret et harmonieux.",
       price: "60 EUR - 95 EUR",
     },
   ],
 };
 
+// ── Product Category Selection ──
 const productCards = document.querySelectorAll(".product-category-card");
 const descriptionTitle = document.getElementById("product-description-title");
 const descriptionText = document.getElementById("product-description-text");
@@ -141,9 +138,8 @@ const renderExamples = (categoryKey, categoryLabel) => {
   if (!examplesContainer || !examplesTitle || !examplesIntro) return;
   const items = bouquetData[categoryKey] || [];
 
-  examplesTitle.textContent = `Exemples de bouquets - ${categoryLabel}`;
-  examplesIntro.textContent =
-    "Chaque exemple est cliquable et ouvre sa page detaillee.";
+  examplesTitle.textContent = `Exemples de bouquets — ${categoryLabel}`;
+  examplesIntro.textContent = "Chaque exemple est cliquable et ouvre sa page détaillée.";
 
   examplesContainer.innerHTML = items
     .map(
@@ -182,9 +178,8 @@ if (productCards.length && descriptionTitle && descriptionText) {
     const categoryKey = card.dataset.category;
     const categoryLabel = card.querySelector("h3")?.textContent || "Bouquets";
 
-    descriptionTitle.textContent = card.dataset.title || "Description categorie";
-    descriptionText.textContent =
-      card.dataset.description || "Description indisponible.";
+    descriptionTitle.textContent = card.dataset.title || "Description catégorie";
+    descriptionText.textContent = card.dataset.description || "Description indisponible.";
 
     productCards.forEach((item) => item.classList.remove("active"));
     card.classList.add("active");
@@ -205,19 +200,14 @@ if (productCards.length && descriptionTitle && descriptionText) {
   updateCategory(productCards[0]);
 }
 
+// ── Bouquet Detail Page ──
 const detailImage = document.getElementById("detail-image");
 const detailCategory = document.getElementById("detail-category");
 const detailName = document.getElementById("detail-name");
 const detailDescription = document.getElementById("detail-description");
 const detailPrice = document.getElementById("detail-price");
 
-if (
-  detailImage &&
-  detailCategory &&
-  detailName &&
-  detailDescription &&
-  detailPrice
-) {
+if (detailImage && detailCategory && detailName && detailDescription && detailPrice) {
   const params = new URLSearchParams(window.location.search);
   const bouquetId = params.get("id");
 
@@ -232,8 +222,7 @@ if (
     detailName.textContent = selected.name;
     detailDescription.textContent = selected.description;
     detailPrice.textContent = `Budget indicatif : ${selected.price}`;
-    detailCategory.textContent =
-      selected.category.charAt(0).toUpperCase() + selected.category.slice(1);
+    detailCategory.textContent = selected.category.charAt(0).toUpperCase() + selected.category.slice(1);
   }
 }
 
@@ -310,7 +299,6 @@ window.addEventListener("scroll", () => {
   const heroImgs = document.querySelectorAll(".hero-carousel img");
   if (!heroImgs.length) return;
   const scrolled = window.scrollY;
-  // Apply a subtle Y translation based on scroll position
   heroImgs.forEach(img => {
     if (img.classList.contains("active")) {
       img.style.transform = `translateY(${Math.floor(scrolled * 0.15)}px) scale(1)`;

@@ -1,23 +1,24 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Détail bouquet | Maison Florale</title>
+    <meta name="description" content="Fiche détaillée d'un bouquet Maison Florale. Composition, prix indicatif et catégorie." />
+    <meta property="og:title" content="Détail bouquet | Maison Florale" />
+    <meta property="og:description" content="Découvrez ce bouquet artisanal signé Maison Florale." />
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" href="logo-floral.svg" type="image/svg+xml" />
-
     <script>(function(){if(localStorage.getItem('theme')==='dark')document.documentElement.dataset.theme='dark'})()</script>
   </head>
   <body>
     <header class="site-header">
       <div class="container nav-wrap">
-        <a class="logo" href="index.html"
+        <a class="logo" href="accueil.html"
           ><img loading="lazy" class="logo-icon" src="logo-floral.svg" alt="" /><span
             >Maison Florale</span
           ></a
         >
-
         <button class="theme-toggle" aria-label="Mode sombre">🌙</button>
         <button class="menu-btn" aria-label="Ouvrir le menu">☰</button>
         <nav class="nav-links">
@@ -32,7 +33,7 @@
     </header>
 
     <main class="container section">
-      <a class="btn btn-secondary" href="produits.html">â† Retour aux produits</a>
+      <a class="btn btn-secondary" href="produits.html">← Retour aux produits</a>
       <section class="detail-layout">
         <img
           id="detail-image"
@@ -53,10 +54,10 @@
     <footer class="site-footer">
       <div class="container">
         <p>
-          © <span id="year"></span> Maison Florale - Fleuriste passionné |
+          © <span id="year"></span> Maison Florale — Fleuriste passionnée |
           <a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram</a>
           |
-          <a href="contact.html">Mentions légales</a>
+          <a href="mentions-legales.html">Mentions légales</a>
         </p>
       </div>
     </footer>
@@ -66,10 +67,7 @@
     <button class="back-to-top" aria-label="Retour en haut">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
     </button>
+    <a href="contact.html" class="mobile-sticky-cta">Demander un devis</a>
     <script src="script.js"></script>
-      <a href="contact.html" class="mobile-sticky-cta">Demander un devis</a>
   </body>
 </html>
-
-
-
