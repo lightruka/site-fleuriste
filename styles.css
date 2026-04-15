@@ -148,6 +148,38 @@ a {
   align-items: center;
 }
 
+@media (max-width: 900px) {
+  .nav-links {
+    position: absolute;
+    right: 4%;
+    top: 74px;
+    background: var(--panel-bg);
+    border: 1px solid var(--header-border);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    width: min(92vw, 280px);
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 14px;
+    gap: 4px;
+    z-index: 60;
+  }
+
+  .nav-links.open { display: flex; }
+
+  .nav-links a {
+    width: 100%;
+    padding: 10px 4px;
+    font-size: 1rem;
+    border-bottom: 1px solid var(--header-border);
+  }
+
+  .nav-links a:last-child {
+    border-bottom: none;
+  }
+}
+
 .nav-links a {
   display: inline-block;
   font-weight: 600;
@@ -962,16 +994,21 @@ textarea {
 }
 
 .mobile-sticky-cta {
-  left: 18px;
-  right: 18px;
-  bottom: 18px;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  bottom: calc(14px + env(safe-area-inset-bottom, 0px));
   width: auto;
-  padding: 14px 22px;
+  padding: 15px 22px;
+  min-height: 50px;
   background: var(--vert-sauge);
   color: #fff;
   text-decoration: none;
   display: none;
   border: none;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 14px;
 }
 
 .mobile-sticky-cta:hover {
@@ -1122,8 +1159,12 @@ textarea {
   .site-title-banner { min-height: 180px; }
   .final-cta { padding: 26px 14px; }
   .steps-grid, .wedding-gallery { grid-template-columns: 1fr 1fr; }
-  .counter-grid { grid-template-columns: 1fr 1fr; }
+  .counter-grid { grid-template-columns: repeat(2, 1fr); }
   .insta-grid { grid-template-columns: repeat(3, 1fr); }
+
+  .detail-layout img { min-height: 240px; }
+
+  .map-frame { min-height: 220px; }
 }
 
 @media (max-width: 700px) {
@@ -1131,30 +1172,15 @@ textarea {
   .logo-icon { width: 24px; height: 24px; }
 
   .nav-links {
-    position: absolute;
-    right: 4%;
     top: 64px;
-    background: var(--panel-bg);
-    border: 1px solid var(--header-border);
-    border-radius: 12px;
-    box-shadow: var(--shadow);
-    width: min(92vw, 260px);
-    display: none;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 8px 12px;
-    gap: 8px;
   }
-
-  .nav-links.open { display: flex; }
-  .nav-links a { width: 100%; padding: 6px 0; font-size: 0.95rem; }
 
   .site-links-grid { grid-template-columns: 1fr; }
 
   .hero-content h1 { font-size: clamp(1.45rem, 7vw, 1.8rem); }
   .tagline { font-size: 0.95rem; }
 
-  .btn { width: auto; text-align: center; padding: 9px 16px; font-size: 0.92rem; }
+  .btn { width: auto; text-align: center; padding: 12px 18px; font-size: 0.95rem; min-height: 44px; }
   .hero-cta-group { flex-direction: column; align-items: stretch; }
 
   .card img { height: 180px; }
@@ -1165,10 +1191,21 @@ textarea {
   .whatsapp-float { bottom: 110px; }
   .back-to-top { bottom: 180px; }
 
+  body { padding-bottom: 70px; }
+
   .theme-toggle { width: auto; }
   .gallery-grid { grid-template-columns: 1fr 1fr; }
   .steps-grid, .wedding-gallery { grid-template-columns: 1fr; }
   .insta-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .counter-grid { grid-template-columns: 1fr 1fr; }
+
+  .season-banner { font-size: 0.9rem; padding: 10px 14px; }
+
+  .editorial-reviews blockquote { padding: 16px; }
+
+  .final-cta { padding: 22px 14px; }
+  .final-cta h2 { font-size: 1.3rem; }
 }
 
 @media (max-width: 520px) {
