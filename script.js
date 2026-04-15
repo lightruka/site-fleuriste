@@ -247,6 +247,8 @@ const revealObserver = new IntersectionObserver(
 );
 
 document.querySelectorAll("main .section, main .about-grid, main .cards").forEach((el) => {
+  // Skip counter sections — they have their own 0→target animation
+  if (el.querySelector && el.querySelector(".counter-grid")) return;
   const rect = el.getBoundingClientRect();
   if (rect.top > window.innerHeight * 0.85) {
     el.classList.add("reveal");
@@ -343,7 +345,7 @@ if (counterEls.length) {
         }
       });
     },
-    { threshold: 0.5 }
+    { threshold: 0.2, rootMargin: "0px 0px 50px 0px" }
   );
 
   counterEls.forEach((el) => counterObs.observe(el));
@@ -478,39 +480,35 @@ if (testimonialCarousel) {
   startTestimonialAuto();
 }
 
-// ── Welcome Popup ──
-const popupOverlay = document.querySelector(".welcome-popup-overlay");
-if (popupOverlay && !localStorage.getItem("popup-dismissed")) {
-  const closePopup = () => {
-    popupOverlay.classList.remove("show");
-    localStorage.setItem("popup-dismissed", "true");
+// ── Newsletter Banner (non-intrusive) ──
+const nlBanner = document.getElementById("newsletter-banner");
+if (nlBanner && !localStorage.getItem("newsletter-dismissed")) {
+  const closeBanner = () => {
+    nlBanner.classList.remove("show");
+    localStorage.setItem("newsletter-dismissed", "true");
   };
 
-  // Show after 4 seconds
+  // Show after 3 seconds (scroll-triggered is even better, but this is simple)
   setTimeout(() => {
-    popupOverlay.classList.add("show");
-  }, 4000);
+    nlBanner.classList.add("show");
+  }, 3000);
 
-  const closeBtn = popupOverlay.querySelector(".popup-close");
-  const skipBtn = popupOverlay.querySelector(".popup-skip");
-  const popupForm = popupOverlay.querySelector(".popup-form");
+  const nlClose = document.getElementById("newsletter-close");
+  const nlForm = document.getElementById("newsletter-form");
 
-  if (closeBtn) closeBtn.addEventListener("click", closePopup);
-  if (skipBtn) skipBtn.addEventListener("click", closePopup);
-  if (popupForm) {
-    popupForm.addEventListener("submit", (e) => {
+  if (nlClose) nlClose.addEventListener("click", closeBanner);
+
+  if (nlForm) {
+    nlForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      const emailInput = popupForm.querySelector("input");
-      if (emailInput && emailInput.value) {
-        popupForm.innerHTML = '<p style="color:var(--vert-sauge-dark);font-weight:700;">✓ Merci ! Vous recevrez nos offres.</p>';
-        setTimeout(closePopup, 2000);
+      const input = nlForm.querySelector("input");
+      if (input && input.value) {
+        nlBanner.querySelector(".newsletter-banner-inner").innerHTML =
+          '<p style="color:var(--vert-sauge-dark);font-weight:700;">✓ Merci ! Vous recevrez nos offres.</p>';
+        setTimeout(closeBanner, 2500);
       }
     });
   }
-
-  popupOverlay.addEventListener("click", (e) => {
-    if (e.target === popupOverlay) closePopup();
-  });
 }
 
 // ── Enhanced Card Reveal with Stagger ──

@@ -204,8 +204,8 @@ a {
   padding: 8px 10px;
   flex-shrink: 0;
   display: none;
-  width: 42px;
-  height: 42px;
+  width: 48px;
+  height: 48px;
   grid-template-columns: 1fr;
   place-items: center;
 }
@@ -219,11 +219,11 @@ a {
   padding: 8px 10px;
   flex-shrink: 0;
   display: none;
-  width: 42px;
-  height: 42px;
+  width: 48px;
+  height: 48px;
   grid-template-columns: 1fr;
   place-items: center;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 
 @media (max-width: 900px) {
@@ -1498,102 +1498,93 @@ body {
   background: var(--vert-sauge);
 }
 
-/* ── Welcome Popup ── */
-.welcome-popup-overlay {
+/* ── Newsletter Banner (non-intrusive) ── */
+.newsletter-banner {
   position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  display: none;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 150;
+  transform: translateY(100%);
+  transition: transform 0.4s ease;
+}
+
+.newsletter-banner.show {
+  transform: translateY(0);
+}
+
+.newsletter-banner-inner {
+  display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 200;
-  padding: 20px;
-  animation: popupOverlayIn 0.3s ease;
-}
-
-.welcome-popup-overlay.show {
-  display: flex;
-}
-
-@keyframes popupOverlayIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.welcome-popup {
+  gap: 12px;
+  padding: 14px 20px;
   background: var(--panel-bg);
-  border-radius: var(--radius);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-  max-width: 420px;
-  width: 100%;
-  padding: 32px 28px;
-  text-align: center;
-  position: relative;
-  animation: popupSlideIn 0.4s ease;
+  border-top: 2px solid var(--vert-sauge);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
 }
 
-@keyframes popupSlideIn {
-  from { opacity: 0; transform: translateY(30px) scale(0.95); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-.welcome-popup .popup-emoji {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-}
-
-.welcome-popup h3 {
+.newsletter-banner-inner p {
+  margin: 0;
+  font-weight: 600;
   color: var(--vert-sauge-dark);
-  margin: 0 0 8px;
-  font-size: 1.4rem;
-}
-
-.welcome-popup p {
-  color: var(--muted);
-  margin: 0 0 18px;
-  line-height: 1.6;
-}
-
-.welcome-popup .popup-input-group {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 14px;
-}
-
-.welcome-popup .popup-input-group input {
-  flex: 1;
-  border-radius: 999px;
-}
-
-.welcome-popup .popup-input-group .btn {
+  font-size: 0.95rem;
   white-space: nowrap;
 }
 
-.popup-close {
-  position: absolute;
-  top: 12px;
-  right: 14px;
+.newsletter-form {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.newsletter-form input {
+  border: 1px solid var(--input-border);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  width: 180px;
+  background: var(--card-bg);
+  color: var(--text);
+}
+
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  border-radius: 999px;
+}
+
+.newsletter-close {
   border: none;
   background: none;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: var(--muted);
   cursor: pointer;
-  padding: 4px;
+  padding: 4px 8px;
+  line-height: 1;
   transition: color 0.25s ease;
 }
 
-.popup-close:hover {
+.newsletter-close:hover {
   color: var(--bordeaux);
 }
 
-.popup-skip {
-  color: var(--muted);
-  font-size: 0.85rem;
-  cursor: pointer;
-  background: none;
-  border: none;
-  text-decoration: underline;
-  font-family: inherit;
+@media (max-width: 700px) {
+  .newsletter-banner-inner {
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px 16px 18px;
+  }
+
+  .newsletter-banner.show {
+    transform: translateY(-62px);
+  }
+
+  .newsletter-form input {
+    width: 160px;
+  }
 }
 
 /* ── Share Buttons ── */
@@ -1708,8 +1699,7 @@ body {
   .calendar-grid { grid-template-columns: repeat(3, 1fr); }
   .testimonial-carousel { padding: 24px 18px; }
   .testimonial-text { font-size: 1rem; }
-  .welcome-popup { padding: 24px 20px; }
-  .welcome-popup .popup-input-group { flex-direction: column; }
+
   .faq-question { padding: 16px 18px; font-size: 1rem; }
   .season-banner { font-size: 0.9rem; line-height: 1.5; }
 }
@@ -1731,10 +1721,7 @@ body {
   .faq-icon { width: 24px; height: 24px; font-size: 0.95rem; }
   .faq-answer p { font-size: 0.93rem; }
 
-  .welcome-popup { max-width: 340px; padding: 22px 18px; }
-  .welcome-popup .popup-emoji { font-size: 2rem; }
-  .welcome-popup h3 { font-size: 1.2rem; }
-  .welcome-popup p { font-size: 0.9rem; }
+
 
   .season-banner { font-size: 0.85rem; padding: 10px 14px; }
 
@@ -1756,7 +1743,7 @@ body {
   .testimonial-text { font-size: 0.9rem; }
   .testimonial-author { gap: 8px; }
 
-  .welcome-popup { max-width: 100%; margin: 0 10px; padding: 20px 16px; }
+
 
   .faq-question { padding: 12px 14px; }
 
