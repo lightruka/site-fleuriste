@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
@@ -6,16 +6,18 @@
     <title>Mariages | Maison Florale</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" href="logo-floral.svg" type="image/svg+xml" />
-    <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;else if(matchMedia('(prefers-color-scheme:dark)').matches)document.documentElement.dataset.theme='dark'})()</script>
+
+    <script>(function(){if(localStorage.getItem('theme')==='dark')document.documentElement.dataset.theme='dark'})()</script>
   </head>
   <body>
     <header class="site-header">
       <div class="container nav-wrap">
         <a class="logo" href="index.html"
-          ><img class="logo-icon" src="logo-floral.svg" alt="" /><span
+          ><img loading="lazy" class="logo-icon" src="logo-floral.svg" alt="" /><span
             >Maison Florale</span
           ></a
         >
+
         <button class="theme-toggle" aria-label="Mode sombre">🌙</button>
         <button class="menu-btn" aria-label="Ouvrir le menu">☰</button>
         <nav class="nav-links">
@@ -46,13 +48,13 @@
       <section class="section">
         <h2>Notre accompagnement</h2>
         <p class="section-intro">
-          De la première rencontre à la mise en place le jour J, nous vous guidons pas à pas.
+          De la première rencontre Ã  la mise en place le jour J, nous vous guidons pas Ã  pas.
         </p>
         <div class="steps-grid">
           <article class="panel step-card">
             <span class="step-number">1</span>
             <h3>Rencontre</h3>
-            <p>Échangez vos envies, vos couleurs et votre budget lors d'un rendez-vous en boutique ou à distance.</p>
+            <p>Échangez vos envies, vos couleurs et votre budget lors d'un rendez-vous en boutique ou Ã  distance.</p>
           </article>
           <article class="panel step-card">
             <span class="step-number">2</span>
@@ -76,7 +78,7 @@
       <section class="section">
         <h2>Nos prestations mariage</h2>
         <p class="section-intro">
-          Chaque élément floral contribue à l'harmonie de votre journée.
+          Chaque élément floral contribue Ã  l'harmonie de votre journée.
         </p>
         <div class="cards">
           <article class="card">
@@ -86,7 +88,7 @@
             />
             <div class="card-body">
               <h3>Bouquet de mariée</h3>
-              <p>Création signature adaptée à votre robe et votre style, des tons pastels aux couleurs vives.</p>
+              <p>Création signature adaptée Ã  votre robe et votre style, des tons pastels aux couleurs vives.</p>
               <p class="price-note">À partir de 85 EUR</p>
             </div>
           </article>
@@ -119,10 +121,10 @@
       <section class="section">
         <h2>Quelques réalisations</h2>
         <div class="wedding-gallery">
-          <img src="https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=600&q=80" alt="Mariage champêtre" />
-          <img src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?auto=format&fit=crop&w=600&q=80" alt="Table de réception" />
-          <img src="https://images.unsplash.com/photo-1455659817273-f96807779a8a?auto=format&fit=crop&w=600&q=80" alt="Cérémonie en extérieur" />
-          <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=600&q=80" alt="Détails floraux" />
+          <img loading="lazy" src="https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=600&q=80" alt="Mariage champêtre" />
+          <img loading="lazy" src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?auto=format&fit=crop&w=600&q=80" alt="Table de réception" />
+          <img loading="lazy" src="https://images.unsplash.com/photo-1455659817273-f96807779a8a?auto=format&fit=crop&w=600&q=80" alt="Cérémonie en extérieur" />
+          <img loading="lazy" src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=600&q=80" alt="Détails floraux" />
         </div>
         <div style="text-align:center;margin-top:18px;">
           <a class="btn btn-secondary" href="galerie.html">Voir toute la galerie</a>
@@ -160,5 +162,7 @@
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
     </button>
     <script src="script.js"></script>
+      <a href="contact.html" class="mobile-sticky-cta">Demander un devis</a>
   </body>
 </html>
+

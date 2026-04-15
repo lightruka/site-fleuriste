@@ -3,11 +3,15 @@ const navLinks = document.querySelector(".nav-links");
 
 if (menuBtn && navLinks) {
   menuBtn.addEventListener("click", () => {
-    navLinks.classList.toggle("open");
+    const isOpen = navLinks.classList.toggle("open");
+    menuBtn.textContent = isOpen ? "✕" : "☰";
   });
 
   navLinks.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => navLinks.classList.remove("open"));
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("open");
+      menuBtn.textContent = "☰";
+    });
   });
 }
 
@@ -34,15 +38,10 @@ const sunSVG = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stro
 
 function updateThemeUI() {
   const isDark = htmlRoot.dataset.theme === "dark";
-
   if (themeToggle) {
     themeToggle.innerHTML = isDark ? sunSVG : moonSVG;
-    themeToggle.setAttribute(
-      "aria-label",
-      isDark ? "Activer le mode clair" : "Activer le mode sombre"
-    );
+    themeToggle.setAttribute("aria-label", isDark ? "Activer le mode clair" : "Activer le mode sombre");
   }
-
   document.querySelectorAll(".logo-icon").forEach((logo) => {
     logo.src = isDark ? "logo-floral-dark.svg" : "logo-floral.svg";
   });
@@ -302,6 +301,21 @@ if (carousel) {
   showSlide(0);
   startAuto();
 }
+
+// ── Hero Parallax ──
+window.addEventListener("scroll", () => {
+  const heroImgs = document.querySelectorAll(".hero-carousel img");
+  if (!heroImgs.length) return;
+  const scrolled = window.scrollY;
+  // Apply a subtle Y translation based on scroll position
+  heroImgs.forEach(img => {
+    if (img.classList.contains("active")) {
+      img.style.transform = `translateY(${Math.floor(scrolled * 0.15)}px) scale(1)`;
+    } else {
+      img.style.transform = `translateY(${Math.floor(scrolled * 0.15)}px) scale(1.05)`;
+    }
+  });
+});
 
 // ── Animated Counters ──
 const counterEls = document.querySelectorAll(".counter-value");
